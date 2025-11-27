@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.XR;
 using UnityEngine.UI;
 using System.Collections;
-
+using TMPro;
 
 public class ReadControllerPose : MonoBehaviour
 {
@@ -38,12 +38,12 @@ public class ReadControllerPose : MonoBehaviour
     private bool started;
     private bool finished;
 
-    public Text Feedback;
-    public Text ScoreShow;
-    public Text Flat;
-    public Text FinalScore;
-    public Text FinalGrade;
-    public Text StartText;
+    public TMP_Text Feedback;
+    public TMP_Text ScoreShow;
+    public TMP_Text Flat;
+    public TMP_Text FinalScore;
+    public TMP_Text FinalGrade;
+    public TMP_Text StartText;
 
 
     IEnumerator Check(int Beat, Vector3 RightControllerPosition, Vector3 LeftControllerPosition, Vector3 setRightPos, Vector3 setLeftPos) {
@@ -80,10 +80,10 @@ public class ReadControllerPose : MonoBehaviour
         setLeftPos = LeftControllerTransform.position;
         setLeftRot = LeftControllerTransform.rotation;
 
-        Feedback.text = "";
-        FinalGrade.text = "";
-        FinalScore.text = "";
-        Flat.text = "";
+        Feedback.text = "feedback";
+        FinalGrade.text = "finalgrade";
+        FinalScore.text = "finalscore";
+        Flat.text = "flat";
         ScoreShow.text = "Score: 0";
         StartText.text = "Please put hands in start position and press the right trigger to begin!";
 

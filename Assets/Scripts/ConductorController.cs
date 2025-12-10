@@ -2,20 +2,21 @@ using UnityEngine;
 using UnityEngine.XR;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
 public class ConductorController : MonoBehaviour
 {
     Vector3[] RightPattern = {
-        new Vector3(0, -1f, 0),
-        new Vector3(-1f, 0, 0),
-        new Vector3(1f, 0, 0),
-        new Vector3(0, 1f, 0)
+        new Vector3(0, -.5f, 0),
+        new Vector3(-.5f, 0, 0),
+        new Vector3(.5f, 0, 0),
+        new Vector3(0, .5f, 0)
     };
     Vector3[] LeftPattern = {
-        new Vector3(0, -1f, 0),
-        new Vector3(1f, 0, 0),
-        new Vector3(-1f, 0, 0),
-        new Vector3(0, 1f, 0)
+        new Vector3(0, -.5f, 0),
+        new Vector3(.5f, 0, 0),
+        new Vector3(-.5f, 0, 0),
+        new Vector3(0, .5f, 0)
     };
 
     [Header("OVR References")]
@@ -39,6 +40,9 @@ public class ConductorController : MonoBehaviour
     [Header("Audio")]
     public AudioManager audioManager;
 
+    [Header("Progress Bar")]
+    public Slider ProgressBar;
+
     private Vector3 setRightPos;
     private Quaternion setRightRot;
     private Vector3 setLeftPos;
@@ -48,6 +52,11 @@ public class ConductorController : MonoBehaviour
     private bool started;
     private bool finished;
     private bool beatChecked = false;
+
+    private const int samplesPerBeat = 30; // ~0.5s at 60 FPS
+    private Vector3[] rightHistory = new Vector3[samplesPerBeat];
+    private Vector3[] leftHistory  = new Vector3[samplesPerBeat];
+    private int historyIndex = 0;
 
     void Start()
     {
@@ -69,12 +78,28 @@ public class ConductorController : MonoBehaviour
                 }
             }
         }
+
         if (Baton == null) Baton = GameObject.Find("Baton");
-        if (RightControllerTransform != null) { setRightPos = RightControllerTransform.position; setRightRot = RightControllerTransform.rotation; }
-        if (LeftControllerTransform != null) { setLeftPos = LeftControllerTransform.position; setLeftRot = LeftControllerTransform.rotation; }
+
+        if (RightControllerTransform != null)
+        {
+            setRightPos = RightControllerTransform.position;
+            setRightRot = RightControllerTransform.rotation;
+        }
+        if (LeftControllerTransform != null)
+        {
+            setLeftPos = LeftControllerTransform.position;
+            setLeftRot = LeftControllerTransform.rotation;
+        }
+
         InitializeUI();
+
         if (audioManager == null) audioManager = FindObjectOfType<AudioManager>();
-        if (audioManager != null) { audioManager.OnBeat += OnBeat; audioManager.OnSongEnd += OnSongEnd; }
+        if (audioManager != null)
+        {
+            audioManager.OnBeat += OnBeat;
+            audioManager.OnSongEnd += OnSongEnd;
+        }
     }
 
     void InitializeUI()
@@ -87,18 +112,28 @@ public class ConductorController : MonoBehaviour
         if (StartText != null) StartText.text = "Press trigger to start!";
         if (BeatIndicator != null) BeatIndicator.text = "";
         if (NextBeatText != null) NextBeatText.text = "";
+        if (ProgressBar != null) ProgressBar.value = 0f;
     }
 
-    void OnDestroy() { if (audioManager != null) { audioManager.OnBeat -= OnBeat; audioManager.OnSongEnd -= OnSongEnd; } }
+    void OnDestroy()
+    {
+        if (audioManager != null)
+        {
+            audioManager.OnBeat -= OnBeat;
+            audioManager.OnSongEnd -= OnSongEnd;
+        }
+    }
 
     void OnBeat(int beat)
     {
         beatChecked = false;
+
         if (BeatIndicator != null)
         {
             string[] n = { "DOWN", "LEFT", "RIGHT", "UP" };
             Color[] c = { Color.red, Color.yellow, Color.green, Color.cyan };
-            BeatIndicator.text = n[beat]; BeatIndicator.color = c[beat];
+            BeatIndicator.text = n[beat];
+            BeatIndicator.color = c[beat];
         }
         if (NextBeatText != null)
         {
@@ -107,77 +142,159 @@ public class ConductorController : MonoBehaviour
         }
     }
 
-    void OnSongEnd() { finished = true; ShowFinalScore(); }
+    void OnSongEnd()
+    {
+        finished = true;
+        ShowFinalScore();
+    }
 
     void Update()
     {
-        if (RightControllerTransform == null || LeftControllerTransform == null) return;
+        if (RightControllerTransform == null || LeftControllerTransform == null)
+            return;
+
         Vector3 rPos = RightControllerTransform.position;
         Quaternion rRot = RightControllerTransform.rotation;
         Vector3 lPos = LeftControllerTransform.position;
         Quaternion lRot = LeftControllerTransform.rotation;
 
         bool trigger = OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch);
-        if (!trigger) { InputDevice rd = InputDevices.GetDeviceAtXRNode(XRNode.RightHand); rd.TryGetFeatureValue(CommonUsages.triggerButton, out trigger); }
+        if (!trigger)
+        {
+            InputDevice rd = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+            rd.TryGetFeatureValue(CommonUsages.triggerButton, out trigger);
+        }
 
         if (trigger)
         {
             if (!started && !finished)
             {
-                setRightPos = rPos; setRightRot = rRot; setLeftPos = lPos; setLeftRot = lRot;
+                setRightPos = rPos;
+                setRightRot = rRot;
+                setLeftPos = lPos;
+                setLeftRot = lRot;
+
                 if (StartText != null) StartText.text = "";
-                started = true; score = 0; totalPossibleScore = 0;
+                started = true;
+                score = 0;
+                totalPossibleScore = 0;
+
                 if (audioManager != null) audioManager.StartSong();
             }
-            else if (finished) RestartGame();
+            else if (finished)
+            {
+                RestartGame();
+            }
         }
 
         if (started && !finished)
         {
             CheckFlatness(rRot, lRot);
-            if (!beatChecked && audioManager != null && audioManager.IsPlaying) { CheckGesture(audioManager.CurrentBeat, rPos, lPos); beatChecked = true; }
-            if (ScoreShow != null) ScoreShow.text = "Score: " + score;
+
+            Vector3 rDelta = rPos - setRightPos;
+            Vector3 lDelta = lPos - setLeftPos;
+
+            rightHistory[historyIndex] = rDelta;
+            leftHistory[historyIndex] = lDelta;
+            historyIndex = (historyIndex + 1) % samplesPerBeat;
+
+            if (!beatChecked && audioManager != null && audioManager.IsPlaying)
+            {
+                CheckGesture(audioManager.CurrentBeat);
+                beatChecked = true;
+            }
+
+            if (ScoreShow != null)
+                ScoreShow.text = "Score: " + score;
+
+            if (ProgressBar != null && audioManager != null && audioManager.IsPlaying)
+            {
+                float progress = Mathf.Clamp01(audioManager.SongTime / audioManager.SongLength);
+                ProgressBar.value = progress;
+            }
         }
     }
 
     void CheckFlatness(Quaternion rRot, Quaternion lRot)
     {
         if (Flat == null) return;
+
         float ra = Quaternion.Angle(setRightRot, rRot);
         float la = Quaternion.Angle(setLeftRot, lRot);
-        if (ra > 5f && la > 5f) { Flat.text = "Flatten both hands!"; Flat.color = Color.red; }
-        else if (ra > 5f) { Flat.text = "Flatten right hand!"; Flat.color = Color.yellow; }
-        else if (la > 5f) { Flat.text = "Flatten left hand!"; Flat.color = Color.yellow; }
+
+        if (ra > 5f && la > 5f)
+        {
+            Flat.text = "Flatten both hands!";
+            Flat.color = Color.red;
+        }
+        else if (ra > 5f)
+        {
+            Flat.text = "Flatten right hand!";
+            Flat.color = Color.yellow;
+        }
+        else if (la > 5f)
+        {
+            Flat.text = "Flatten left hand!";
+            Flat.color = Color.yellow;
+        }
         else Flat.text = "";
     }
 
-    void CheckGesture(int beat, Vector3 rPos, Vector3 lPos)
+    void CheckGesture(int beat)
     {
-        Vector3 rd = rPos - setRightPos; Vector3 ld = lPos - setLeftPos;
-        float rDot = Vector3.Dot(rd.normalized, RightPattern[beat]);
-        float lDot = Vector3.Dot(ld.normalized, LeftPattern[beat]);
-        float combined = ((rDot + lDot) / 2f) * Mathf.Clamp01((rd.magnitude + ld.magnitude) / 0.4f);
+        Vector3 avgR = Vector3.zero;
+        Vector3 avgL = Vector3.zero;
+
+        for (int i = 0; i < samplesPerBeat; i++)
+        {
+            avgR += rightHistory[i];
+            avgL += leftHistory[i];
+        }
+
+        avgR /= samplesPerBeat;
+        avgL /= samplesPerBeat;
+
+        float rDot = Vector3.Dot(avgR.normalized, RightPattern[beat]);
+        float lDot = Vector3.Dot(avgL.normalized, LeftPattern[beat]);
+
+        float magnitudeFactor = Mathf.Clamp01((avgR.magnitude + avgL.magnitude) / 0.4f);
+
+        float combined = ((rDot + lDot) * 0.5f) * magnitudeFactor;
+
         totalPossibleScore += 5;
+
         if (combined > 0.7f) StartCoroutine(ShowFeedback("Perfect!", Color.blue, 5));
         else if (combined > 0.5f) StartCoroutine(ShowFeedback("Good", Color.green, 3));
         else if (combined > 0.3f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
         else StartCoroutine(ShowFeedback("X", Color.red, 0));
-        if (audioManager != null) audioManager.SetMasterVolume(Mathf.Clamp((rd.magnitude + ld.magnitude) * 1.5f, 0.3f, 1f));
+
+        if (audioManager != null)
+            audioManager.SetMasterVolume(Mathf.Clamp((avgR.magnitude + avgL.magnitude) * 1.5f, 0.3f, 1f));
     }
 
     IEnumerator ShowFeedback(string t, Color c, int p)
     {
         score += p;
-        if (Feedback != null) { Feedback.text = t; Feedback.color = c; }
+
+        if (Feedback != null)
+        {
+            Feedback.text = t;
+            Feedback.color = c;
+        }
+
         yield return new WaitForSeconds(0.5f);
+
         if (Feedback != null) Feedback.text = "";
     }
 
     void ShowFinalScore()
     {
         started = false;
+
         float pct = totalPossibleScore > 0 ? (float)score / totalPossibleScore : 0;
+
         if (FinalScore != null) FinalScore.text = score + "/" + totalPossibleScore;
+
         if (FinalGrade != null)
         {
             if (pct >= 0.9f) { FinalGrade.text = "A"; FinalGrade.color = Color.blue; }
@@ -186,8 +303,21 @@ public class ConductorController : MonoBehaviour
             else if (pct >= 0.6f) { FinalGrade.text = "D"; FinalGrade.color = new Color(1f, 0.5f, 0f); }
             else { FinalGrade.text = "F"; FinalGrade.color = Color.red; }
         }
-        if (StartText != null) StartText.text = "Press trigger to replay!";
+
+        if (ProgressBar != null) { ProgressBar.value = 1f; }
+
+        if (StartText != null)
+            StartText.text = "Press trigger to replay!";
+
+        
     }
 
-    public void RestartGame() { finished = false; started = false; score = 0; totalPossibleScore = 0; InitializeUI(); }
+    public void RestartGame()
+    {
+        finished = false;
+        started = false;
+        score = 0;
+        totalPossibleScore = 0;
+        InitializeUI();
+    }
 }

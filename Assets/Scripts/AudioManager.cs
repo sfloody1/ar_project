@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour
 
     public bool IsPlaying => isPlaying;
     public bool IsSongFinished => songFinished;
+    public float SongLength => songDuration;
     public float SongTime => songTime;
     public int CurrentBeat => currentBeat;
     public int TotalBeatsPlayed => totalBeatsPlayed;

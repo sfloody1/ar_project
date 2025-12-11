@@ -1396,7 +1396,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: cf8f450c0234c4145992d020a7dfe40b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1721,9 +1721,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248128944}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.406, y: -0.11, z: 0.409}
+  m_LocalScale: {x: 0.30173, y: 0.30173, z: 0.30173}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2018924181}
@@ -1743,7 +1743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c14103a3a1c64efa9bfb7ddaec1a86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicStandSetup
-  sheetTexture: {fileID: 0}
+  sheetTexture: {fileID: 2800000, guid: c412b0379686745bea62b43472375f8d, type: 3}
   sheetRenderer: {fileID: 0}
 --- !u!114 &248128947
 MonoBehaviour:
@@ -4293,7 +4293,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: cf8f450c0234c4145992d020a7dfe40b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -8958,7 +8958,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.0000000057054814, y: 0.9914449, z: -0.1305262, w: -0.000000043337433}
   m_LocalPosition: {x: 0, y: 1.2, z: -0.05}
-  m_LocalScale: {x: 0.4, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.5235398, y: 0.37956002, z: 1.2652}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 248128945}
@@ -13021,7 +13021,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.02, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.02, z: 0.25}
+  m_LocalScale: {x: 0.25, y: 0.017573994, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 248128945}
@@ -13565,9 +13565,11 @@ MonoBehaviour:
   StartText: {fileID: 412055900}
   BeatIndicator: {fileID: 1846914891}
   NextBeatText: {fileID: 1105898030}
+  feedbackFont: {fileID: 0}
+  scoreFont: {fileID: 0}
+  gradeFont: {fileID: 0}
   audioManager: {fileID: 1243452063}
-  instrumentAnchor: {fileID: 0}
-  minSpeed: 0.3
+  ProgressBar: {fileID: 0}
 --- !u!4 &2036835634
 Transform:
   m_ObjectHideFlags: 0

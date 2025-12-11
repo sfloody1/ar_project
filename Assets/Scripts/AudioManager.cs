@@ -65,6 +65,7 @@ public class AudioManager : MonoBehaviour
     {
         SetupAudioSources();
         songDuration = pianoClip != null ? pianoClip.length : (violinClip != null ? violinClip.length : 45f);
+        songDuration = 1f;
     }
 
     void Update()

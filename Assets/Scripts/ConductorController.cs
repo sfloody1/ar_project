@@ -37,6 +37,10 @@ public class ConductorController : MonoBehaviour
     public TMP_Text BeatIndicator;
     public TMP_Text NextBeatText;
 
+    public TMP_FontAsset feedbackFont;
+    public TMP_FontAsset scoreFont;
+    public TMP_FontAsset gradeFont;
+
     [Header("Audio")]
     public AudioManager audioManager;
 
@@ -52,6 +56,8 @@ public class ConductorController : MonoBehaviour
     private bool started;
     private bool finished;
     private bool beatChecked = false;
+    private bool canRestart = false;
+
 
     private const int samplesPerBeat = 30; // ~0.5s at 60 FPS
     private Vector3[] rightHistory = new Vector3[samplesPerBeat];
@@ -104,15 +110,41 @@ public class ConductorController : MonoBehaviour
 
     void InitializeUI()
     {
-        if (Feedback != null) Feedback.text = "";
-        if (FinalGrade != null) FinalGrade.text = "";
-        if (FinalScore != null) FinalScore.text = "";
-        if (Flat != null) Flat.text = "";
-        if (ScoreShow != null) ScoreShow.text = "Score: 0";
-        if (StartText != null) StartText.text = "Press trigger to start!";
-        if (BeatIndicator != null) BeatIndicator.text = "";
-        if (NextBeatText != null) NextBeatText.text = "";
-        if (ProgressBar != null) ProgressBar.value = 0f;
+        if (Feedback != null){
+            Feedback.text = "";
+            Feedback.font = feedbackFont;
+        } 
+        if (FinalGrade != null){
+            FinalGrade.text = "";
+            FinalGrade.font = gradeFont;
+        } 
+        if (FinalScore != null){
+            FinalScore.text = "";
+            FinalScore.font = scoreFont;
+        }
+        if (Flat != null){
+            Flat.text = "";
+            Flat.font = feedbackFont;
+        } 
+        if (ScoreShow != null){
+            ScoreShow.text = "Score: 0";
+            ScoreShow.font = scoreFont;
+        } 
+        if (StartText != null){
+            StartText.text = "Press trigger to start!";
+            StartText.font = scoreFont;
+        } 
+        if (BeatIndicator != null){
+            BeatIndicator.text = "";
+            BeatIndicator.font = scoreFont;
+        } 
+        if (NextBeatText != null){
+            NextBeatText.text = "";
+            NextBeatText.font = scoreFont;
+        }
+        if (ProgressBar != null){
+            ProgressBar.value = 0f;
+        }
     }
 
     void OnDestroy()
@@ -152,6 +184,7 @@ public class ConductorController : MonoBehaviour
     {
         if (RightControllerTransform == null || LeftControllerTransform == null)
             return;
+        
 
         Vector3 rPos = RightControllerTransform.position;
         Quaternion rRot = RightControllerTransform.rotation;
@@ -164,7 +197,7 @@ public class ConductorController : MonoBehaviour
             InputDevice rd = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
             rd.TryGetFeatureValue(CommonUsages.triggerButton, out trigger);
         }
-
+        Debug.Log("SongTime: " + audioManager.SongTime);
         if (trigger)
         {
             if (!started && !finished)
@@ -181,9 +214,11 @@ public class ConductorController : MonoBehaviour
 
                 if (audioManager != null) audioManager.StartSong();
             }
-            else if (finished)
+            else if (finished && canRestart)
             {
                 RestartGame();
+                canRestart = false;
+                return;
             }
         }
 
@@ -266,7 +301,7 @@ public class ConductorController : MonoBehaviour
         if (combined > 0.7f) StartCoroutine(ShowFeedback("Perfect!", Color.blue, 5));
         else if (combined > 0.5f) StartCoroutine(ShowFeedback("Good", Color.green, 3));
         else if (combined > 0.3f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
-        else StartCoroutine(ShowFeedback("X", Color.red, 0));
+        else StartCoroutine(ShowFeedback("X", Color.red, 5));
 
         if (audioManager != null)
             audioManager.SetMasterVolume(Mathf.Clamp((avgR.magnitude + avgL.magnitude) * 1.5f, 0.3f, 1f));
@@ -290,11 +325,82 @@ public class ConductorController : MonoBehaviour
     void ShowFinalScore()
     {
         started = false;
+        finished = true;
 
-        float pct = totalPossibleScore > 0 ? (float)score / totalPossibleScore : 0;
+        StopAllCoroutines();
 
-        if (FinalScore != null) FinalScore.text = score + "/" + totalPossibleScore;
+        clearText();
 
+        if (FinalScore != null){
+            StartCoroutine(AnimateFinalScore(score, totalPossibleScore));
+        } 
+
+        if (ProgressBar != null) { ProgressBar.value = 1f; }
+
+        if (StartText != null){
+            StartText.text = "Press trigger to replay!";
+        }
+
+        StartCoroutine(EnableRestart());
+        
+    }
+    IEnumerator EnableRestart()
+    {
+        yield return new WaitForSeconds(0.2f); 
+        canRestart = true;
+    }
+
+    void clearText() {
+        if (Feedback != null){
+            Feedback.text = "";
+            Feedback.ForceMeshUpdate();
+        } 
+        if (Flat != null){
+            Flat.text = "";
+            Flat.ForceMeshUpdate();
+        } 
+        if (ScoreShow != null){
+            ScoreShow.text = "";
+            ScoreShow.ForceMeshUpdate();
+        } 
+        if (BeatIndicator != null){
+            BeatIndicator.text = "";
+            BeatIndicator.ForceMeshUpdate();
+        } 
+        if (NextBeatText != null){
+            NextBeatText.text = "";
+            NextBeatText.ForceMeshUpdate();
+        }
+    }
+
+    IEnumerator AnimateFinalScore(int finalScore, int totalPossibleScore)
+    {
+        if (FinalScore == null) yield break;
+
+        float duration = 1.5f; 
+        float elapsed = 0f;
+        int displayedScore = 0;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
+            displayedScore = Mathf.RoundToInt(Mathf.Lerp(0, finalScore, t));
+            float movingPct = totalPossibleScore > 0 ? (float)displayedScore / totalPossibleScore : 0;
+
+            if (movingPct >= 0.9f) FinalScore.color = Color.blue;
+            else if (movingPct >= 0.8f) FinalScore.color = Color.green;
+            else if (movingPct >= 0.7f) FinalScore.color = Color.yellow;
+            else if (movingPct >= 0.6f) FinalScore.color = new Color(1f, 0.5f, 0f);
+            else FinalScore.color = Color.red;
+
+            FinalScore.text = $"Final Score: {displayedScore}/{totalPossibleScore}";
+
+            yield return null;
+        }
+
+        FinalScore.text = $"Final Score: {finalScore}/{totalPossibleScore}";
+        float pct = totalPossibleScore > 0 ? (float)finalScore / totalPossibleScore : 0;
         if (FinalGrade != null)
         {
             if (pct >= 0.9f) { FinalGrade.text = "A"; FinalGrade.color = Color.blue; }
@@ -304,20 +410,14 @@ public class ConductorController : MonoBehaviour
             else { FinalGrade.text = "F"; FinalGrade.color = Color.red; }
         }
 
-        if (ProgressBar != null) { ProgressBar.value = 1f; }
-
-        if (StartText != null)
-            StartText.text = "Press trigger to replay!";
-
-        
     }
 
     public void RestartGame()
     {
+        InitializeUI();
         finished = false;
         started = false;
         score = 0;
         totalPossibleScore = 0;
-        InitializeUI();
     }
 }

@@ -1938,7 +1938,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -149, y: 456}
+  m_AnchoredPosition: {x: -200, y: 200}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070033446
@@ -2346,7 +2346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1179582226
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,7 +2730,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1301190328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3485,9 +3485,8 @@ MonoBehaviour:
   audioManager: {fileID: 1003469941}
   ProgressBar: {fileID: 415795918}
   PauseCanvas: {fileID: 2100257480}
-  RightIndicator: {fileID: 356282989}
-  LeftIndicator: {fileID: 404768116}
-  photoImage: {fileID: 1070033446}
+  RightReferenceMarker: {fileID: 356282989}
+  LeftReferenceMarker: {fileID: 404768116}
 --- !u!4 &1774079297
 Transform:
   m_ObjectHideFlags: 0

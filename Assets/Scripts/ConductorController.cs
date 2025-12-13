@@ -7,15 +7,15 @@ using UnityEngine.UI;
 public class ConductorController : MonoBehaviour
 {
     Vector3[] RightPattern = {
-        new Vector3(0, -.2f, 0),
-        new Vector3(-.2f, 0, 0),
-        new Vector3(.2f, 0, 0),
+        new Vector3(0, -.1f, 0),
+        new Vector3(.15f, 0, 0),
+        new Vector3(-.15f, 0, 0),
         new Vector3(0, .2f, 0)
     };
     Vector3[] LeftPattern = {
-        new Vector3(0, -.2f, 0),
-        new Vector3(.2f, 0, 0),
-        new Vector3(-.2f, 0, 0),
+        new Vector3(0, -.1f, 0),
+        new Vector3(-.15f, 0, 0),
+        new Vector3(.15f, 0, 0),
         new Vector3(0, .2f, 0)
     };
 
@@ -53,8 +53,6 @@ public class ConductorController : MonoBehaviour
     private bool isPaused = false;
 
 
-
-
     private Vector3 setRightPos;
     private Quaternion setRightRot;
     private Vector3 setLeftPos;
@@ -66,9 +64,11 @@ public class ConductorController : MonoBehaviour
     private bool beatChecked = false;
     private bool canRestart = false;
     private bool isCountingDown = false;
+    private int CurrentBeat = 0;
+    
 
 
-    private const int samplesPerBeat = 30; // ~0.5s at 60 FPS
+    private const int samplesPerBeat = 30; 
     private Vector3[] rightHistory = new Vector3[samplesPerBeat];
     private Vector3[] leftHistory  = new Vector3[samplesPerBeat];
     private int historyIndex = 0;
@@ -76,21 +76,19 @@ public class ConductorController : MonoBehaviour
     private Coroutine rightMoveCoroutine;
     private Coroutine leftMoveCoroutine;
 
-    public GameObject RightReferenceMarker; // Assign in inspector
-    public GameObject LeftReferenceMarker; 
+    public GameObject RightIndicator; 
+    public GameObject LeftIndicator; 
+    public Image photoImage;
 
 
-
-    public void TogglePause()
-    {
+    public void TogglePause() {
         if (isPaused)
             ResumeGame();
         else
             PauseGame();
     }
 
-    public void PauseGame()
-    {
+    public void PauseGame() {
         isPaused = true;
 
         Time.timeScale = 0f;
@@ -102,8 +100,7 @@ public class ConductorController : MonoBehaviour
             PauseCanvas.SetActive(true);
     }
 
-    public void ResumeGame()
-    {
+    public void ResumeGame() {
         isPaused = false;
 
         Time.timeScale = 1f;
@@ -115,14 +112,12 @@ public class ConductorController : MonoBehaviour
             PauseCanvas.SetActive(false);
     }
 
-    public void PlayTutorial()
-    {
+    public void PlayTutorial() {
         Debug.Log("Play Tutorial pressed");
 
     }
 
-    public void QuitGame()
-    {
+    public void QuitGame() {
         Debug.Log("Quit Game pressed");
 
     #if UNITY_EDITOR
@@ -131,6 +126,21 @@ public class ConductorController : MonoBehaviour
         Application.Quit();
     #endif
     }
+
+    void UpdateIndicators(int beat)
+    {
+        Vector3 forwardOffset = ovrCameraRig.centerEyeAnchor.forward * 0.3f; // 0.3 meters in front
+
+        if (RightIndicator != null)
+        {
+            RightIndicator.transform.position = setRightPos + RightPattern[beat] + forwardOffset;
+        }
+        if (LeftIndicator != null)
+        {
+            LeftIndicator.transform.position = setLeftPos + LeftPattern[beat] + forwardOffset;
+        }
+    }
+
 
     void Start()
     {
@@ -180,13 +190,6 @@ public class ConductorController : MonoBehaviour
 
         if (LeftControllerTransform != null)
             setLeftPos = LeftControllerTransform.position;
-
-        // Example: show where "LEFT" beat would be for the right hand
-        if (RightReferenceMarker != null)
-            RightReferenceMarker.transform.position = setRightPos + new Vector3(-0.2f, 0, 0); // LEFT offset
-
-        if (LeftReferenceMarker != null)
-            LeftReferenceMarker.transform.position = setLeftPos + new Vector3(0.2f, 0, 0); // RIGHT offset
     }
 
     void InitializeUI()
@@ -231,6 +234,8 @@ public class ConductorController : MonoBehaviour
             CountDown.font = feedbackFont;
             CountDown.gameObject.SetActive(false);
         }
+        photoImage.gameObject.SetActive(false);
+
 
         isCountingDown = false;
 
@@ -248,12 +253,11 @@ public class ConductorController : MonoBehaviour
     void OnBeat(int beat)
     {
         beatChecked = false;
-
         if (BeatIndicator != null)
         {
             string[] n = { "DOWN", "LEFT", "RIGHT", "UP" };
             Color[] c = { Color.red, Color.yellow, Color.green, Color.cyan };
-            BeatIndicator.text = n[beat];
+            BeatIndicator.text = "Beat " + (beat + 1);
             BeatIndicator.color = c[beat];
         }
         if (NextBeatText != null)
@@ -262,7 +266,15 @@ public class ConductorController : MonoBehaviour
             NextBeatText.text = "Next: " + n[(beat + 1) % 4];
         }
 
+        UpdateIndicators(beat);
+
+        if (started && !finished && !isCountingDown)
+        {
+            CheckGesture(beat);
+            beatChecked = true;
+        }
     }
+
 
 
 
@@ -310,6 +322,8 @@ public class ConductorController : MonoBehaviour
                 totalPossibleScore = 0;
 
                 StartCoroutine(StartCountDown());
+
+                photoImage.gameObject.SetActive(true);
 
             }
             else if (finished && canRestart)

@@ -65,7 +65,8 @@ public class AudioManager : MonoBehaviour
     {
         SetupAudioSources();
         songDuration = pianoClip != null ? pianoClip.length : (violinClip != null ? violinClip.length : 45f);
-        songDuration = 1f;
+        //songDuration = 1f;
+        Debug.Log("Song length: " + songDuration);
     }
 
     void Update()
@@ -170,6 +171,25 @@ public class AudioManager : MonoBehaviour
             case 2: return "RIGHT";
             case 3: return "UP";
             default: return "";
+        }
+    }
+    public void PauseSong()
+    {
+        if (pianoSource != null) {
+            pianoSource.Pause();
+        }
+        if (violinSource != null) {
+            violinSource.Pause();
+        }
+    }
+
+    public void ResumeSong()
+    {
+        if (pianoSource != null) {
+            pianoSource.UnPause();
+        }
+        if (violinSource != null) {
+            violinSource.UnPause();
         }
     }
 

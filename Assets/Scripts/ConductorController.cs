@@ -7,16 +7,16 @@ using UnityEngine.UI;
 public class ConductorController : MonoBehaviour
 {
     Vector3[] RightPattern = {
-        new Vector3(0, -.5f, 0),
-        new Vector3(-.5f, 0, 0),
-        new Vector3(.5f, 0, 0),
-        new Vector3(0, .5f, 0)
+        new Vector3(0, -.2f, 0),
+        new Vector3(-.2f, 0, 0),
+        new Vector3(.2f, 0, 0),
+        new Vector3(0, .2f, 0)
     };
     Vector3[] LeftPattern = {
-        new Vector3(0, -.5f, 0),
-        new Vector3(.5f, 0, 0),
-        new Vector3(-.5f, 0, 0),
-        new Vector3(0, .5f, 0)
+        new Vector3(0, -.2f, 0),
+        new Vector3(.2f, 0, 0),
+        new Vector3(-.2f, 0, 0),
+        new Vector3(0, .2f, 0)
     };
 
     [Header("OVR References")]
@@ -36,6 +36,7 @@ public class ConductorController : MonoBehaviour
     public TMP_Text StartText;
     public TMP_Text BeatIndicator;
     public TMP_Text NextBeatText;
+    public TMP_Text CountDown;
 
     public TMP_FontAsset feedbackFont;
     public TMP_FontAsset scoreFont;
@@ -47,6 +48,13 @@ public class ConductorController : MonoBehaviour
     [Header("Progress Bar")]
     public Slider ProgressBar;
 
+    [Header("Pause Menu")]
+    public GameObject PauseCanvas;
+    private bool isPaused = false;
+
+
+
+
     private Vector3 setRightPos;
     private Quaternion setRightRot;
     private Vector3 setLeftPos;
@@ -57,12 +65,72 @@ public class ConductorController : MonoBehaviour
     private bool finished;
     private bool beatChecked = false;
     private bool canRestart = false;
+    private bool isCountingDown = false;
 
 
     private const int samplesPerBeat = 30; // ~0.5s at 60 FPS
     private Vector3[] rightHistory = new Vector3[samplesPerBeat];
     private Vector3[] leftHistory  = new Vector3[samplesPerBeat];
     private int historyIndex = 0;
+
+    private Coroutine rightMoveCoroutine;
+    private Coroutine leftMoveCoroutine;
+
+    public GameObject RightReferenceMarker; // Assign in inspector
+    public GameObject LeftReferenceMarker; 
+
+
+
+    public void TogglePause()
+    {
+        if (isPaused)
+            ResumeGame();
+        else
+            PauseGame();
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+
+        Time.timeScale = 0f;
+
+        if (audioManager != null)
+            audioManager.PauseSong();
+
+        if (PauseCanvas != null)
+            PauseCanvas.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+
+        Time.timeScale = 1f;
+
+        if (audioManager != null)
+            audioManager.ResumeSong();
+
+        if (PauseCanvas != null)
+            PauseCanvas.SetActive(false);
+    }
+
+    public void PlayTutorial()
+    {
+        Debug.Log("Play Tutorial pressed");
+
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game pressed");
+
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif
+    }
 
     void Start()
     {
@@ -106,6 +174,19 @@ public class ConductorController : MonoBehaviour
             audioManager.OnBeat += OnBeat;
             audioManager.OnSongEnd += OnSongEnd;
         }
+
+        if (RightControllerTransform != null)
+        setRightPos = RightControllerTransform.position;
+
+        if (LeftControllerTransform != null)
+            setLeftPos = LeftControllerTransform.position;
+
+        // Example: show where "LEFT" beat would be for the right hand
+        if (RightReferenceMarker != null)
+            RightReferenceMarker.transform.position = setRightPos + new Vector3(-0.2f, 0, 0); // LEFT offset
+
+        if (LeftReferenceMarker != null)
+            LeftReferenceMarker.transform.position = setLeftPos + new Vector3(0.2f, 0, 0); // RIGHT offset
     }
 
     void InitializeUI()
@@ -145,6 +226,14 @@ public class ConductorController : MonoBehaviour
         if (ProgressBar != null){
             ProgressBar.value = 0f;
         }
+        if (CountDown != null) {
+            CountDown.text = "";
+            CountDown.font = feedbackFont;
+            CountDown.gameObject.SetActive(false);
+        }
+
+        isCountingDown = false;
+
     }
 
     void OnDestroy()
@@ -172,7 +261,11 @@ public class ConductorController : MonoBehaviour
             string[] n = { "DOWN", "LEFT", "RIGHT", "UP" };
             NextBeatText.text = "Next: " + n[(beat + 1) % 4];
         }
+
     }
+
+
+
 
     void OnSongEnd()
     {
@@ -180,8 +273,10 @@ public class ConductorController : MonoBehaviour
         ShowFinalScore();
     }
 
+
     void Update()
     {
+        if (isPaused) return;
         if (RightControllerTransform == null || LeftControllerTransform == null)
             return;
         
@@ -197,22 +292,25 @@ public class ConductorController : MonoBehaviour
             InputDevice rd = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
             rd.TryGetFeatureValue(CommonUsages.triggerButton, out trigger);
         }
+        Debug.Log("Song length: " + audioManager.SongLength);
         Debug.Log("SongTime: " + audioManager.SongTime);
         if (trigger)
         {
-            if (!started && !finished)
+            if (!started && !finished && RightControllerTransform != null && LeftControllerTransform != null)
             {
                 setRightPos = rPos;
                 setRightRot = rRot;
                 setLeftPos = lPos;
                 setLeftRot = lRot;
 
+
                 if (StartText != null) StartText.text = "";
                 started = true;
                 score = 0;
                 totalPossibleScore = 0;
 
-                if (audioManager != null) audioManager.StartSong();
+                StartCoroutine(StartCountDown());
+
             }
             else if (finished && canRestart)
             {
@@ -222,7 +320,7 @@ public class ConductorController : MonoBehaviour
             }
         }
 
-        if (started && !finished)
+        if (started && !finished && !isCountingDown)
         {
             CheckFlatness(rRot, lRot);
 
@@ -248,7 +346,43 @@ public class ConductorController : MonoBehaviour
                 ProgressBar.value = progress;
             }
         }
+        if (OVRInput.GetDown(OVRInput.Button.Three)) 
+        {
+            TogglePause();
+            return; 
+        }
     }
+
+    IEnumerator StartCountDown()
+    {
+        isCountingDown = true;
+
+        if (CountDown != null)
+            CountDown.gameObject.SetActive(true);
+
+        string[] steps = { "3", "2", "1", "GO!" };
+
+        foreach (string s in steps)
+        {
+            if (CountDown != null)
+            {
+                CountDown.text = s;
+                CountDown.color = s == "GO!" ? Color.green : Color.white;
+                CountDown.ForceMeshUpdate();
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        if (CountDown != null)
+            CountDown.gameObject.SetActive(false);
+
+        isCountingDown = false;
+        started = true;
+
+        if (audioManager != null) audioManager.StartSong();
+    }
+
 
     void CheckFlatness(Quaternion rRot, Quaternion lRot)
     {
@@ -301,7 +435,7 @@ public class ConductorController : MonoBehaviour
         if (combined > 0.7f) StartCoroutine(ShowFeedback("Perfect!", Color.blue, 5));
         else if (combined > 0.5f) StartCoroutine(ShowFeedback("Good", Color.green, 3));
         else if (combined > 0.3f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
-        else StartCoroutine(ShowFeedback("X", Color.red, 5));
+        else StartCoroutine(ShowFeedback("X", Color.red, 0));
 
         if (audioManager != null)
             audioManager.SetMasterVolume(Mathf.Clamp((avgR.magnitude + avgL.magnitude) * 1.5f, 0.3f, 1f));
@@ -412,12 +546,46 @@ public class ConductorController : MonoBehaviour
 
     }
 
-    public void RestartGame()
+    public void ResetGameState()
     {
         InitializeUI();
         finished = false;
         started = false;
         score = 0;
         totalPossibleScore = 0;
+        canRestart = false;
     }
+
+    public void RestartGame()
+    {
+        StopAllCoroutines();
+        
+        ResetGameState();
+
+        if (RightControllerTransform != null)
+        {
+            setRightPos = RightControllerTransform.position;
+            setRightRot = RightControllerTransform.rotation;
+        }
+        if (LeftControllerTransform != null)
+        {
+            setLeftPos = LeftControllerTransform.position;
+            setLeftRot = LeftControllerTransform.rotation;
+        }
+
+        for (int i = 0; i < samplesPerBeat; i++)
+        {
+            rightHistory[i] = Vector3.zero;
+            leftHistory[i] = Vector3.zero;
+        }
+        historyIndex = 0;
+
+        if (rightMoveCoroutine != null) StopCoroutine(rightMoveCoroutine);
+        if (leftMoveCoroutine != null) StopCoroutine(leftMoveCoroutine);
+
+
+        StartCoroutine(StartCountDown());
+    }
+
+
 }

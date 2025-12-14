@@ -287,12 +287,26 @@ public class ConductorController : MonoBehaviour
     }
 
 
-    void Update()
+void Update()
     {
+        // IMPORTANT: Check pause/quit BEFORE the isPaused return!
+        if (OVRInput.GetDown(OVRInput.Button.Three)) // X button - toggle pause
+        {
+            TogglePause();
+            return;
+        }
+        
+        // B button - quit when paused
+        if (isPaused && OVRInput.GetDown(OVRInput.Button.One)) // B button on right controller
+        {
+            QuitGame();
+            return;
+        }
+
         if (isPaused) return;
+        
         if (RightControllerTransform == null || LeftControllerTransform == null)
             return;
-        
 
         Vector3 rPos = RightControllerTransform.position;
         Quaternion rRot = RightControllerTransform.rotation;
@@ -305,8 +319,7 @@ public class ConductorController : MonoBehaviour
             InputDevice rd = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
             rd.TryGetFeatureValue(CommonUsages.triggerButton, out trigger);
         }
-        Debug.Log("Song length: " + audioManager.SongLength);
-        Debug.Log("SongTime: " + audioManager.SongTime);
+
         if (trigger)
         {
             if (!started && !finished && RightControllerTransform != null && LeftControllerTransform != null)
@@ -315,7 +328,6 @@ public class ConductorController : MonoBehaviour
                 setRightRot = rRot;
                 setLeftPos = lPos;
                 setLeftRot = lRot;
-
 
                 if (StartText != null) StartText.text = "";
                 started = true;
@@ -326,7 +338,6 @@ public class ConductorController : MonoBehaviour
 
                 if (photoImage != null)
                     photoImage.gameObject.SetActive(true);
-
             }
             else if (finished && canRestart)
             {
@@ -362,14 +373,9 @@ public class ConductorController : MonoBehaviour
                 ProgressBar.value = progress;
             }
         }
-        if (OVRInput.GetDown(OVRInput.Button.Three)) 
-        {
-            TogglePause();
-            return; 
-        }
     }
 
-    IEnumerator StartCountDown()
+IEnumerator StartCountDown()
     {
         isCountingDown = true;
 
@@ -397,7 +403,38 @@ public class ConductorController : MonoBehaviour
         started = true;
 
         if (audioManager != null) audioManager.StartSong();
+        
+        // Start photo fade out - show for 4 seconds, then fade over 1.5 seconds
+        if (photoImage != null)
+            StartCoroutine(FadeOutPhoto(4f, 1.5f));
     }
+
+IEnumerator FadeOutPhoto(float displayTime, float fadeTime)
+    {
+        // Show photo for displayTime seconds
+        yield return new WaitForSeconds(displayTime);
+        
+        // Then fade out over fadeTime seconds
+        if (photoImage != null)
+        {
+            Color startColor = photoImage.color;
+            float elapsed = 0f;
+            
+            while (elapsed < fadeTime)
+            {
+                elapsed += Time.deltaTime;
+                float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeTime);
+                photoImage.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+                yield return null;
+            }
+            
+            // Hide completely after fade
+            photoImage.gameObject.SetActive(false);
+            // Reset alpha for next time
+            photoImage.color = new Color(startColor.r, startColor.g, startColor.b, 1f);
+        }
+    }
+
 
 
     void CheckFlatness(Quaternion rRot, Quaternion lRot)
@@ -425,26 +462,26 @@ public class ConductorController : MonoBehaviour
         else Flat.text = "";
     }
 
-    void CheckGesture(int beat)
+void CheckGesture(int beat)
     {
+        // Only score right hand movement
         Vector3 avgR = Vector3.zero;
-        Vector3 avgL = Vector3.zero;
 
         for (int i = 0; i < samplesPerBeat; i++)
         {
             avgR += rightHistory[i];
-            avgL += leftHistory[i];
         }
 
         avgR /= samplesPerBeat;
-        avgL /= samplesPerBeat;
 
+        // Calculate dot product with expected right hand pattern
         float rDot = Vector3.Dot(avgR.normalized, RightPattern[beat]);
-        float lDot = Vector3.Dot(avgL.normalized, LeftPattern[beat]);
 
-        float magnitudeFactor = Mathf.Clamp01((avgR.magnitude + avgL.magnitude) / 0.4f);
+        // Factor in movement magnitude (need to actually move, not just point)
+        float magnitudeFactor = Mathf.Clamp01(avgR.magnitude / 0.2f);
 
-        float combined = ((rDot + lDot) * 0.5f) * magnitudeFactor;
+        // Final score based on direction accuracy and movement magnitude
+        float combined = rDot * magnitudeFactor;
 
         totalPossibleScore += 5;
 
@@ -453,8 +490,9 @@ public class ConductorController : MonoBehaviour
         else if (combined > 0.3f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
         else StartCoroutine(ShowFeedback("X", Color.red, 0));
 
+        // Volume based on right hand movement magnitude
         if (audioManager != null)
-            audioManager.SetMasterVolume(Mathf.Clamp((avgR.magnitude + avgL.magnitude) * 1.5f, 0.3f, 1f));
+            audioManager.SetMasterVolume(Mathf.Clamp(avgR.magnitude * 2f, 0.3f, 1f));
     }
 
     IEnumerator ShowFeedback(string t, Color c, int p)

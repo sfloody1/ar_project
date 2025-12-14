@@ -118,7 +118,10 @@ public class AudioManager : MonoBehaviour
     {
         if (isPlaying) return;
         songTime = 0f; currentBeat = 0; totalBeatsPlayed = 0; currentBar = 0; songFinished = false;
-        songStartTime = Time.time; nextBeatTime = Time.time + beatInterval;
+        songStartTime = Time.time;
+        // Add extra time before first beat so player can prepare
+        // First beat will trigger after 1.5 beat intervals instead of 1
+        nextBeatTime = Time.time + beatInterval * 1.5f;
         if (pianoSource != null && pianoSource.clip != null) pianoSource.Play();
         if (violinSource != null && violinSource.clip != null) violinSource.Play();
         isPlaying = true;

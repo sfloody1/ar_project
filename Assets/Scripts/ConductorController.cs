@@ -234,7 +234,8 @@ public class ConductorController : MonoBehaviour
             CountDown.font = feedbackFont;
             CountDown.gameObject.SetActive(false);
         }
-        photoImage.gameObject.SetActive(false);
+        if (photoImage != null)
+            photoImage.gameObject.SetActive(false);
 
 
         isCountingDown = false;
@@ -323,7 +324,8 @@ public class ConductorController : MonoBehaviour
 
                 StartCoroutine(StartCountDown());
 
-                photoImage.gameObject.SetActive(true);
+                if (photoImage != null)
+                    photoImage.gameObject.SetActive(true);
 
             }
             else if (finished && canRestart)

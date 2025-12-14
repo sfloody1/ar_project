@@ -80,6 +80,10 @@ public class ConductorController : MonoBehaviour
     public GameObject LeftIndicator; 
     public Image photoImage;
 
+    private Vector3 prevRightPos;
+    private Vector3 prevLeftPos;
+
+
 
     public void TogglePause() {
         if (isPaused)
@@ -129,17 +133,19 @@ public class ConductorController : MonoBehaviour
 
     void UpdateIndicators(int beat)
     {
-        Vector3 forwardOffset = ovrCameraRig.centerEyeAnchor.forward * 0.3f; // 0.3 meters in front
+        if (RightIndicator == null || LeftIndicator == null) return;
 
-        if (RightIndicator != null)
-        {
-            RightIndicator.transform.position = setRightPos + RightPattern[beat] + forwardOffset;
-        }
-        if (LeftIndicator != null)
-        {
-            LeftIndicator.transform.position = setLeftPos + LeftPattern[beat] + forwardOffset;
-        }
+        // These are LOCAL positions relative to VR_UI_Anchor
+        Vector3 rightBase = Vector3.right * 0.15f;
+        Vector3 leftBase  = Vector3.left  * 0.15f;
+
+        RightIndicator.transform.localPosition =
+            rightBase + RightPattern[beat] + new Vector3(.2f, .5f, 1f);
+
+        LeftIndicator.transform.localPosition =
+            leftBase + LeftPattern[beat] + new Vector3(-.2f, .5f, 1f);
     }
+
 
 
     void Start()
@@ -190,6 +196,9 @@ public class ConductorController : MonoBehaviour
 
         if (LeftControllerTransform != null)
             setLeftPos = LeftControllerTransform.position;
+
+        prevRightPos = RightControllerTransform.position;
+        prevLeftPos = LeftControllerTransform.position;
     }
 
     void InitializeUI()
@@ -287,7 +296,7 @@ public class ConductorController : MonoBehaviour
     }
 
 
-void Update()
+    void Update()
     {
         // IMPORTANT: Check pause/quit BEFORE the isPaused return!
         if (OVRInput.GetDown(OVRInput.Button.Three)) // X button - toggle pause
@@ -350,13 +359,15 @@ void Update()
         if (started && !finished && !isCountingDown)
         {
             CheckFlatness(rRot, lRot);
+            //CHANGE HERE
+            //Vector3 rDelta = rPos - setRightPos;
+            //Vector3 lDelta = lPos - setLeftPos;
+            //Vector3 rDelta = rPos - prevRightPos;
+            //Vector3 lDelta = lPos - prevLeftPos;
 
-            Vector3 rDelta = rPos - setRightPos;
-            Vector3 lDelta = lPos - setLeftPos;
-
-            rightHistory[historyIndex] = rDelta;
-            leftHistory[historyIndex] = lDelta;
-            historyIndex = (historyIndex + 1) % samplesPerBeat;
+            //rightHistory[historyIndex] = rDelta;
+            //leftHistory[historyIndex] = lDelta;
+            //historyIndex = (historyIndex + 1) % samplesPerBeat;
 
             if (!beatChecked && audioManager != null && audioManager.IsPlaying)
             {
@@ -373,9 +384,10 @@ void Update()
                 ProgressBar.value = progress;
             }
         }
+
     }
 
-IEnumerator StartCountDown()
+    IEnumerator StartCountDown()
     {
         isCountingDown = true;
 
@@ -406,10 +418,10 @@ IEnumerator StartCountDown()
         
         // Start photo fade out - show for 4 seconds, then fade over 1.5 seconds
         if (photoImage != null)
-            StartCoroutine(FadeOutPhoto(4f, 1.5f));
+            StartCoroutine(FadeOutPhoto(8f, 1.5f));
     }
 
-IEnumerator FadeOutPhoto(float displayTime, float fadeTime)
+    IEnumerator FadeOutPhoto(float displayTime, float fadeTime)
     {
         // Show photo for displayTime seconds
         yield return new WaitForSeconds(displayTime);
@@ -444,17 +456,17 @@ IEnumerator FadeOutPhoto(float displayTime, float fadeTime)
         float ra = Quaternion.Angle(setRightRot, rRot);
         float la = Quaternion.Angle(setLeftRot, lRot);
 
-        if (ra > 5f && la > 5f)
+        if (ra > 30f && la > 30f)
         {
             Flat.text = "Flatten both hands!";
             Flat.color = Color.red;
         }
-        else if (ra > 5f)
+        else if (ra > 30f)
         {
             Flat.text = "Flatten right hand!";
             Flat.color = Color.yellow;
         }
-        else if (la > 5f)
+        else if (la > 30f)
         {
             Flat.text = "Flatten left hand!";
             Flat.color = Color.yellow;
@@ -462,37 +474,36 @@ IEnumerator FadeOutPhoto(float displayTime, float fadeTime)
         else Flat.text = "";
     }
 
-void CheckGesture(int beat)
+    void CheckGesture(int beat)
     {
-        // Only score right hand movement
-        Vector3 avgR = Vector3.zero;
+        // Calculate movement since last beat
+        Vector3 rDelta = RightControllerTransform.position - prevRightPos;
+        Vector3 lDelta = LeftControllerTransform.position - prevLeftPos;
 
-        for (int i = 0; i < samplesPerBeat; i++)
-        {
-            avgR += rightHistory[i];
-        }
-
-        avgR /= samplesPerBeat;
+        // Optional: store last positions for next beat
+        prevRightPos = RightControllerTransform.position;
+        prevLeftPos = LeftControllerTransform.position;
 
         // Calculate dot product with expected right hand pattern
-        float rDot = Vector3.Dot(avgR.normalized, RightPattern[beat]);
+        float rDot = Vector3.Dot(rDelta.normalized, RightPattern[beat]);
 
         // Factor in movement magnitude (need to actually move, not just point)
-        float magnitudeFactor = Mathf.Clamp01(avgR.magnitude / 0.2f);
+        float magnitudeFactor = Mathf.Clamp01(rDelta.magnitude / 0.2f);
 
         // Final score based on direction accuracy and movement magnitude
         float combined = rDot * magnitudeFactor;
 
-        totalPossibleScore += 5;
+        totalPossibleScore += 3;
 
-        if (combined > 0.7f) StartCoroutine(ShowFeedback("Perfect!", Color.blue, 5));
-        else if (combined > 0.5f) StartCoroutine(ShowFeedback("Good", Color.green, 3));
-        else if (combined > 0.3f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
+        if (combined > 0.15f) StartCoroutine(ShowFeedback("Perfect!", Color.blue, 3));
+        else if (combined > 0.1f) StartCoroutine(ShowFeedback("Good", Color.green, 2));
+        else if (combined > 0.05f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
         else StartCoroutine(ShowFeedback("X", Color.red, 0));
 
         // Volume based on right hand movement magnitude
         if (audioManager != null)
-            audioManager.SetMasterVolume(Mathf.Clamp(avgR.magnitude * 2f, 0.3f, 1f));
+            audioManager.SetMasterVolume(Mathf.Clamp(rDelta.magnitude * 2f, 0.3f, 1f));
+
     }
 
     IEnumerator ShowFeedback(string t, Color c, int p)
@@ -591,10 +602,10 @@ void CheckGesture(int beat)
         float pct = totalPossibleScore > 0 ? (float)finalScore / totalPossibleScore : 0;
         if (FinalGrade != null)
         {
-            if (pct >= 0.9f) { FinalGrade.text = "A"; FinalGrade.color = Color.blue; }
-            else if (pct >= 0.8f) { FinalGrade.text = "B"; FinalGrade.color = Color.green; }
-            else if (pct >= 0.7f) { FinalGrade.text = "C"; FinalGrade.color = Color.yellow; }
-            else if (pct >= 0.6f) { FinalGrade.text = "D"; FinalGrade.color = new Color(1f, 0.5f, 0f); }
+            if (pct >= 0.75f) { FinalGrade.text = "A"; FinalGrade.color = Color.blue; }
+            else if (pct >= 0.6f) { FinalGrade.text = "B"; FinalGrade.color = Color.green; }
+            else if (pct >= 0.45f) { FinalGrade.text = "C"; FinalGrade.color = Color.yellow; }
+            else if (pct >= 0.3f) { FinalGrade.text = "D"; FinalGrade.color = new Color(1f, 0.5f, 0f); }
             else { FinalGrade.text = "F"; FinalGrade.color = Color.red; }
         }
 

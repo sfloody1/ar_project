@@ -74,6 +74,8 @@ extern void AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3 (void);
 extern void AudioSource_PlayOneShot_m098BCAE084AABB128BB19ED805D2D985E7B75112 (void);
 extern void AudioSource_PlayOneShot_mF6FE95C58996B38EF6E7F7482F95F5E15E0AB30B (void);
 extern void AudioSource_Stop_m318F17F17A147C77FF6E0A5A7A6BE057DB90F537 (void);
+extern void AudioSource_Pause_m2C2A09359E8AA924FEADECC1AFEA519B3C915B26 (void);
+extern void AudioSource_UnPause_mC4A6A1E71439A3ADB4664B62DABDF4D79D3B21B9 (void);
 extern void AudioSource_get_isPlaying_mC203303F2F7146B2C056CB47B9391463FDF408FC (void);
 extern void AudioSource_set_loop_m834A590939D8456008C0F897FD80B0ECFFB7FE56 (void);
 extern void AudioSource_set_playOnAwake_m7EACC6ECEF12D7BA86A4E5A53603F1C8F9E11949 (void);
@@ -88,6 +90,8 @@ extern void AudioSource_set_volume_Injected_m4A5BD8D8EEEF904031C7B543AE841472A16
 extern void AudioSource_set_time_Injected_mE7A39794CA6E907399B852A24F721F0E4E803F9C (void);
 extern void AudioSource_get_resource_Injected_mF9AACD7830BC3BCC0AB27C8F1EF8C3E2DFAF32A9 (void);
 extern void AudioSource_set_resource_Injected_m373B5772DA37F4AE5F270E8806CEBC1D745B5A20 (void);
+extern void AudioSource_Pause_Injected_m6A35224283B7AA64A63FA0EB18BC263F26E84810 (void);
+extern void AudioSource_UnPause_Injected_mC6085B8B35ED9D18A62E54DEFAC86087FCA23A9E (void);
 extern void AudioSource_get_isPlaying_Injected_m9CF82B2AA1F4CDBBE7189E07D1719933AB84065F (void);
 extern void AudioSource_set_loop_Injected_mEF9474AF2A1FC89B8DE5B578B167E1FE3C0E00CC (void);
 extern void AudioSource_set_playOnAwake_Injected_m009A05A89DC8B7EDB36EA1F0CA4E49076993F9C9 (void);
@@ -103,7 +107,7 @@ extern void AudioClipPlayable_GetHandle_mEA1D664328FF9B08E4F7D5EBCD4B51A754D97C4
 extern void AudioClipPlayable_Equals_m9C1C75ACBB74FE06AD02BE4643F6EB39413EFF83 (void);
 extern void AudioMixerPlayable_GetHandle_m6C182D9794E901D123223BB57738A302BEAB41FD (void);
 extern void AudioMixerPlayable_Equals_mDFB945EB48199A338BAD00D40FB8EEC34CF64D57 (void);
-static Il2CppMethodPointer s_methodPointers[96] = 
+static Il2CppMethodPointer s_methodPointers[100] = 
 {
 	AudioSettings_GetSampleRate_mF571145D34E609D5F0F8C232FB9FDCCCC521F2A5,
 	AudioSettings_get_dspTime_m246053C21870BC68BF7BBC5C5AC1B8F25337AEEA,
@@ -172,6 +176,8 @@ static Il2CppMethodPointer s_methodPointers[96] =
 	AudioSource_PlayOneShot_m098BCAE084AABB128BB19ED805D2D985E7B75112,
 	AudioSource_PlayOneShot_mF6FE95C58996B38EF6E7F7482F95F5E15E0AB30B,
 	AudioSource_Stop_m318F17F17A147C77FF6E0A5A7A6BE057DB90F537,
+	AudioSource_Pause_m2C2A09359E8AA924FEADECC1AFEA519B3C915B26,
+	AudioSource_UnPause_mC4A6A1E71439A3ADB4664B62DABDF4D79D3B21B9,
 	AudioSource_get_isPlaying_mC203303F2F7146B2C056CB47B9391463FDF408FC,
 	AudioSource_set_loop_m834A590939D8456008C0F897FD80B0ECFFB7FE56,
 	AudioSource_set_playOnAwake_m7EACC6ECEF12D7BA86A4E5A53603F1C8F9E11949,
@@ -186,6 +192,8 @@ static Il2CppMethodPointer s_methodPointers[96] =
 	AudioSource_set_time_Injected_mE7A39794CA6E907399B852A24F721F0E4E803F9C,
 	AudioSource_get_resource_Injected_mF9AACD7830BC3BCC0AB27C8F1EF8C3E2DFAF32A9,
 	AudioSource_set_resource_Injected_m373B5772DA37F4AE5F270E8806CEBC1D745B5A20,
+	AudioSource_Pause_Injected_m6A35224283B7AA64A63FA0EB18BC263F26E84810,
+	AudioSource_UnPause_Injected_mC6085B8B35ED9D18A62E54DEFAC86087FCA23A9E,
 	AudioSource_get_isPlaying_Injected_m9CF82B2AA1F4CDBBE7189E07D1719933AB84065F,
 	AudioSource_set_loop_Injected_mEF9474AF2A1FC89B8DE5B578B167E1FE3C0E00CC,
 	AudioSource_set_playOnAwake_Injected_m009A05A89DC8B7EDB36EA1F0CA4E49076993F9C9,
@@ -208,44 +216,44 @@ extern void AudioMixerPlayable_GetHandle_m6C182D9794E901D123223BB57738A302BEAB41
 extern void AudioMixerPlayable_Equals_mDFB945EB48199A338BAD00D40FB8EEC34CF64D57_AdjustorThunk (void);
 static Il2CppTokenAdjustorThunkPair s_adjustorThunks[4] = 
 {
-	{ 0x0600005D, AudioClipPlayable_GetHandle_mEA1D664328FF9B08E4F7D5EBCD4B51A754D97C44_AdjustorThunk },
-	{ 0x0600005E, AudioClipPlayable_Equals_m9C1C75ACBB74FE06AD02BE4643F6EB39413EFF83_AdjustorThunk },
-	{ 0x0600005F, AudioMixerPlayable_GetHandle_m6C182D9794E901D123223BB57738A302BEAB41FD_AdjustorThunk },
-	{ 0x06000060, AudioMixerPlayable_Equals_mDFB945EB48199A338BAD00D40FB8EEC34CF64D57_AdjustorThunk },
+	{ 0x06000061, AudioClipPlayable_GetHandle_mEA1D664328FF9B08E4F7D5EBCD4B51A754D97C44_AdjustorThunk },
+	{ 0x06000062, AudioClipPlayable_Equals_m9C1C75ACBB74FE06AD02BE4643F6EB39413EFF83_AdjustorThunk },
+	{ 0x06000063, AudioMixerPlayable_GetHandle_m6C182D9794E901D123223BB57738A302BEAB41FD_AdjustorThunk },
+	{ 0x06000064, AudioMixerPlayable_Equals_mDFB945EB48199A338BAD00D40FB8EEC34CF64D57_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[96] = 
+static const int32_t s_InvokerIndices[100] = 
 {
-	31830,
-	31809,
-	31830,
-	31783,
+	31831,
+	31810,
+	31831,
+	31784,
+	30577,
+	31944,
+	31944,
+	31795,
+	31795,
 	30576,
-	31943,
-	31943,
-	31794,
-	31794,
-	30575,
-	7972,
+	7971,
 	14927,
-	31794,
-	30576,
-	31794,
-	30576,
-	31794,
-	31943,
-	31943,
+	31795,
+	30577,
+	31795,
+	30577,
+	31795,
+	31944,
+	31944,
 	19743,
 	23798,
 	23796,
-	31852,
+	31853,
 	19518,
-	1333,
+	1332,
 	19621,
 	19428,
 	19428,
 	19428,
-	4965,
-	4965,
+	4964,
+	4964,
 	21511,
 	20475,
 	15160,
@@ -256,20 +264,20 @@ static const int32_t s_InvokerIndices[96] =
 	15072,
 	23781,
 	23781,
-	31832,
+	31833,
 	27332,
 	20735,
-	30258,
-	29864,
-	29864,
-	29864,
-	7972,
+	30259,
+	29865,
+	29865,
+	29865,
+	7971,
 	15160,
-	7972,
+	7971,
 	15072,
 	19743,
 	19743,
-	27531,
+	27532,
 	25127,
 	14927,
 	15263,
@@ -280,23 +288,27 @@ static const int32_t s_InvokerIndices[96] =
 	15160,
 	19743,
 	15160,
-	8000,
+	7999,
+	19743,
+	19743,
 	19743,
 	19279,
 	14927,
 	14927,
 	15263,
 	14927,
-	4877,
+	4876,
 	19743,
 	27342,
 	24931,
 	27333,
 	27339,
 	27339,
-	29931,
+	29932,
 	27337,
-	29651,
+	30589,
+	30589,
+	29652,
 	27333,
 	27333,
 	27339,
@@ -304,19 +316,19 @@ static const int32_t s_InvokerIndices[96] =
 	23785,
 	15072,
 	15072,
-	7972,
-	8031,
+	7971,
+	8030,
 	19743,
 	19539,
-	10726,
+	10725,
 	19539,
-	10727,
+	10726,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_AudioModule_CodeGenModule;
 const Il2CppCodeGenModule g_UnityEngine_AudioModule_CodeGenModule = 
 {
 	"UnityEngine.AudioModule.dll",
-	96,
+	100,
 	s_methodPointers,
 	4,
 	s_adjustorThunks,

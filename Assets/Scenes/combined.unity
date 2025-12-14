@@ -317,6 +317,58 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.009499997, y: 0.01770607, z: -0.0011095554}
     m_Extent: {x: 0.04527676, y: 0.05372102, z: 0.06648618}
   m_DirtyAABB: 0
+--- !u!1 &35965403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 35965405}
+  - component: {fileID: 35965404}
+  m_Layer: 0
+  m_Name: ARPlacer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &35965404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35965403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5944a18be71fa4b8ea148c76f3947d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ARInstrumentPlacer
+  orchestra: {fileID: 589322575}
+  playerHead: {fileID: 1841311417}
+  distanceFromPlayer: 2.5
+  maxPlacementHeight: 0.3
+  useSceneAnchors: 1
+  autoPlaceOnStart: 0
+  fallbackFloorHeight: 0
+  showDebugVisuals: 0
+--- !u!4 &35965405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35965403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &43638728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,7 +3781,7 @@ MonoBehaviour:
   requestBodyTrackingPermissionOnStartup: 0
   requestFaceTrackingPermissionOnStartup: 0
   requestEyeTrackingPermissionOnStartup: 0
-  requestScenePermissionOnStartup: 0
+  requestScenePermissionOnStartup: 1
   requestRecordAudioPermissionOnStartup: 0
   requestPassthroughCameraAccessPermissionOnStartup: 0
   _localDimming: 1
@@ -4094,6 +4146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 589322575}
   - component: {fileID: 589322576}
+  - component: {fileID: 589322577}
   m_Layer: 0
   m_Name: Orchestra
   m_TagString: Untagged
@@ -4134,6 +4187,26 @@ MonoBehaviour:
   playerHead: {fileID: 0}
   distanceFromPlayer: 3
   floorHeight: 0
+--- !u!114 &589322577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589322574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5944a18be71fa4b8ea148c76f3947d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ARInstrumentPlacer
+  orchestra: {fileID: 0}
+  playerHead: {fileID: 0}
+  distanceFromPlayer: 2.5
+  maxPlacementHeight: 0.3
+  useSceneAnchors: 1
+  autoPlaceOnStart: 0
+  fallbackFloorHeight: 0
+  showDebugVisuals: 0
 --- !u!1 &590079874
 GameObject:
   m_ObjectHideFlags: 0
@@ -5744,6 +5817,52 @@ Transform:
   - {fileID: 1685330683}
   m_Father: {fileID: 968623146}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &795771641
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 795771643}
+  - component: {fileID: 795771642}
+  m_Layer: 0
+  m_Name: PassthroughManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &795771642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795771641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d77f7232ce28841e6a6777784813b387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PassthroughSetup
+  enableOnStart: 1
+  passthroughOpacity: 1
+--- !u!4 &795771643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795771641}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &809229216
 GameObject:
   m_ObjectHideFlags: 0
@@ -6086,6 +6205,59 @@ Transform:
   - {fileID: 1463178397}
   - {fileID: 1473754258}
   m_Father: {fileID: 1045109661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &861196085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861196087}
+  - component: {fileID: 861196086}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &861196086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861196085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2987f23bd8b69472d8a458271be393bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleTutorialManager
+  tutorialPanel: {fileID: 0}
+  videoDisplay: {fileID: 0}
+  skipButton: {fileID: 0}
+  tutorialVideoClip: {fileID: 0}
+  videoUrl: 
+  conductorController: {fileID: 0}
+  audioManager: {fileID: 0}
+  showTutorialOnStart: 1
+  allowSkip: 1
+--- !u!4 &861196087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861196085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862982130
 GameObject:
@@ -6544,7 +6716,6 @@ GameObject:
   - component: {fileID: 935343319}
   - component: {fileID: 935343322}
   - component: {fileID: 935343321}
-  - component: {fileID: 935343320}
   m_Layer: 0
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -6581,34 +6752,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 800, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &935343320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935343318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee10491ef6d5d1d49a270cf6b09bdc19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Oculus.VR::OVROverlayCanvas
-  _enableMipmapping: 0
-  _dynamicResolution: 1
-  _redrawResolutionThreshold: 2147483647
-  rectTransform: {fileID: 935343319}
-  maxTextureSize: 2048
-  manualRedraw: 0
-  renderInterval: 1
-  renderIntervalFrameOffset: 0
-  expensive: 0
-  layer: 5
-  opacity: 2
-  shape: 0
-  curveRadius: 1
-  overlapMask: 0
-  overlayType: 1
-  _overlayEnabled: 1
 --- !u!114 &935343321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12930,6 +13073,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1714536725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1916171829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916171831}
+  - component: {fileID: 1916171830}
+  m_Layer: 0
+  m_Name: FloatingTutorial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1916171830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916171829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cae8c9264cf46d79d016d216a7d2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloatingTutorial
+  playerHead: {fileID: 1841311417}
+  videoPlayer: {fileID: 0}
+  videoDisplay: {fileID: 0}
+  skipText: {fileID: 0}
+  conductorController: {fileID: 2036835633}
+  audioManager: {fileID: 0}
+  distanceFromPlayer: 1.5
+  heightOffset: 0
+  followSpeed: 2
+  lookAtSpeed: 5
+  windowWidth: 0.8
+  windowHeight: 0.45
+  tutorialClip: {fileID: 32900000, guid: 3c30d2ce7c42f44da89b9865f43ca3a8, type: 3}
+  videoUrl: 
+  showOnStart: 1
+  allowSkip: 1
+  skipHoldTime: 1.5
+--- !u!4 &1916171831
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916171829}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1929206893
 GameObject:
   m_ObjectHideFlags: 0
@@ -13565,11 +13769,16 @@ MonoBehaviour:
   StartText: {fileID: 412055900}
   BeatIndicator: {fileID: 1846914891}
   NextBeatText: {fileID: 1105898030}
+  CountDown: {fileID: 0}
   feedbackFont: {fileID: 0}
   scoreFont: {fileID: 0}
   gradeFont: {fileID: 0}
   audioManager: {fileID: 1243452063}
   ProgressBar: {fileID: 0}
+  PauseCanvas: {fileID: 0}
+  RightIndicator: {fileID: 0}
+  LeftIndicator: {fileID: 0}
+  photoImage: {fileID: 0}
 --- !u!4 &2036835634
 Transform:
   m_ObjectHideFlags: 0
@@ -14178,3 +14387,7 @@ SceneRoots:
   - {fileID: 1243452064}
   - {fileID: 2036835634}
   - {fileID: 589322575}
+  - {fileID: 795771643}
+  - {fileID: 861196087}
+  - {fileID: 1916171831}
+  - {fileID: 35965405}

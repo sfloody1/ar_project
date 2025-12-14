@@ -8,14 +8,14 @@ public class ConductorController : MonoBehaviour
 {
     Vector3[] RightPattern = {
         new Vector3(0, -.1f, 0),
-        new Vector3(.15f, 0, 0),
         new Vector3(-.15f, 0, 0),
+        new Vector3(.15f, 0, 0),
         new Vector3(0, .2f, 0)
     };
     Vector3[] LeftPattern = {
         new Vector3(0, -.1f, 0),
-        new Vector3(-.15f, 0, 0),
         new Vector3(.15f, 0, 0),
+        new Vector3(-.15f, 0, 0),
         new Vector3(0, .2f, 0)
     };
 

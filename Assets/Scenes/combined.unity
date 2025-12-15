@@ -9602,8 +9602,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   pianoSource: {fileID: 0}
   violinSource: {fileID: 0}
-  pianoClip: {fileID: 8300000, guid: 6deb078a7c5804eda952da3f06840168, type: 3}
-  violinClip: {fileID: 8300000, guid: 6deb078a7c5804eda952da3f06840168, type: 3}
+  pianoClip: {fileID: 8300000, guid: 316b700a4fe44408c827e48ff3ddf2d9, type: 3}
+  violinClip: {fileID: 8300000, guid: 316b700a4fe44408c827e48ff3ddf2d9, type: 3}
   BPM: 92
   beatsPerBar: 4
   pianoVolume: 1

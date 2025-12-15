@@ -116,9 +116,23 @@ public class ConductorController : MonoBehaviour
             PauseCanvas.SetActive(false);
     }
 
-    public void PlayTutorial() {
+public void PlayTutorial() {
         Debug.Log("Play Tutorial pressed");
-
+        
+        // Close pause menu
+        if (PauseCanvas != null)
+            PauseCanvas.SetActive(false);
+        
+        // Find and show tutorial
+        FloatingTutorial tutorial = FindObjectOfType<FloatingTutorial>();
+        if (tutorial != null)
+        {
+            tutorial.ReplayTutorial();
+        }
+        else
+        {
+            Debug.LogWarning("FloatingTutorial not found!");
+        }
     }
 
     public void QuitGame() {
@@ -298,17 +312,24 @@ public class ConductorController : MonoBehaviour
 
     void Update()
     {
-        // IMPORTANT: Check pause/quit BEFORE the isPaused return!
-        if (OVRInput.GetDown(OVRInput.Button.Three)) // X button - toggle pause
+        // X button (left hand) - toggle pause
+        if (OVRInput.GetDown(OVRInput.Button.Three))
         {
             TogglePause();
             return;
         }
         
-        // B button - quit when paused
-        if (isPaused && OVRInput.GetDown(OVRInput.Button.One)) // B button on right controller
+        // A button (right hand) - quit when paused
+        if (isPaused && OVRInput.GetDown(OVRInput.Button.One))
         {
             QuitGame();
+            return;
+        }
+        
+        // B button (right hand) - play tutorial when paused
+        if (isPaused && OVRInput.GetDown(OVRInput.Button.Two))
+        {
+            PlayTutorial();
             return;
         }
 
@@ -377,7 +398,6 @@ public class ConductorController : MonoBehaviour
 
             if (ScoreShow != null){
                 ScoreShow.text = "Score: " + score;
-                ScoreShow.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, .25f);
             }
             if (ProgressBar != null && audioManager != null && audioManager.IsPlaying)
             {

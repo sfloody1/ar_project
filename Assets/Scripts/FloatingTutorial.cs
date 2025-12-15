@@ -5,10 +5,14 @@ using TMPro;
 
 /// <summary>
 /// Floating AR-style tutorial window that follows the player's view
-/// Positions itself in front of the player and stays visible
+/// Auto-connects to Tutorial button in pause menu
 /// </summary>
 public class FloatingTutorial : MonoBehaviour
 {
+
+
+private void OnEnable() { if (videoPlayer == null || videoDisplay == null) { CreateTutorialUI(); } }
+
     [Header("References")]
     public Transform playerHead;           // CenterEyeAnchor
     public VideoPlayer videoPlayer;
@@ -16,38 +20,36 @@ public class FloatingTutorial : MonoBehaviour
     public TMP_Text skipText;
     public ConductorController conductorController;
     public AudioManager audioManager;
+    public Button tutorialButton;          // Optional: Button in pause menu
     
     [Header("Floating Settings")]
-    public float distanceFromPlayer = 1.5f;  // How far in front of player
-    public float heightOffset = 0.0f;        // Offset from eye level
-    public float followSpeed = 2f;           // How fast it follows player gaze
-    public float lookAtSpeed = 5f;           // How fast it rotates to face player
+    public float distanceFromPlayer = 1.5f;  
+    public float heightOffset = 0.0f;        
+    public float followSpeed = 2f;           
+    public float lookAtSpeed = 5f;           
     
     [Header("Window Size")]
-    public float windowWidth = 0.8f;         // Width in meters
-    public float windowHeight = 0.45f;       // Height in meters (16:9 aspect)
+    public float windowWidth = 0.8f;         
+    public float windowHeight = 0.45f;       
     
     [Header("Tutorial Settings")]
     public VideoClip tutorialClip;
-    public string videoUrl;                  // Alternative: streaming URL
+    public string videoUrl;                  
     public bool showOnStart = true;
     public bool allowSkip = true;
-    public float skipHoldTime = 1.5f;        // Hold trigger to skip
+    public float skipHoldTime = 1.5f;        
     
     private float skipHoldTimer = 0f;
     private bool isShowing = false;
     private bool tutorialCompleted = false;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
-    
-    // The actual floating panel
     private GameObject floatingPanel;
     private MeshRenderer panelBackground;
     private Canvas worldCanvas;
     
     void Start()
     {
-        // Find player head if not assigned
         if (playerHead == null)
         {
             OVRCameraRig rig = FindObjectOfType<OVRCameraRig>();
@@ -55,13 +57,10 @@ public class FloatingTutorial : MonoBehaviour
                 playerHead = rig.centerEyeAnchor;
         }
         
-        // Create the floating panel
         CreateFloatingPanel();
-        
-        // Setup video player
         SetupVideoPlayer();
+        ConnectTutorialButton();
         
-        // Initially hide
         if (floatingPanel != null)
             floatingPanel.SetActive(false);
         
@@ -71,29 +70,53 @@ public class FloatingTutorial : MonoBehaviour
         }
     }
     
+    void ConnectTutorialButton()
+    {
+        if (tutorialButton == null)
+        {
+            GameObject buttonObj = GameObject.Find("TutorialButton");
+            if (buttonObj != null)
+                tutorialButton = buttonObj.GetComponent<Button>();
+        }
+        
+        if (tutorialButton != null)
+        {
+            tutorialButton.onClick.RemoveAllListeners();
+            tutorialButton.onClick.AddListener(OnTutorialButtonPressed);
+            Debug.Log("[FloatingTutorial] Connected to Tutorial button");
+        }
+    }
+    
+    public void OnTutorialButtonPressed()
+    {
+        Debug.Log("[FloatingTutorial] Tutorial button pressed");
+        
+        if (conductorController != null && conductorController.PauseCanvas != null)
+        {
+            conductorController.PauseCanvas.SetActive(false);
+        }
+        
+        tutorialCompleted = false;
+        ShowTutorial();
+    }
+    
     void CreateFloatingPanel()
     {
-        // Create parent object
         floatingPanel = new GameObject("FloatingTutorialPanel");
         floatingPanel.transform.SetParent(transform);
         
-        // Create background quad
         GameObject bgQuad = GameObject.CreatePrimitive(PrimitiveType.Quad);
         bgQuad.name = "Background";
         bgQuad.transform.SetParent(floatingPanel.transform);
-        bgQuad.transform.localPosition = new Vector3(0, 0, 0.01f); // Slightly behind video
+        bgQuad.transform.localPosition = new Vector3(0, 0, 0.01f);
         bgQuad.transform.localScale = new Vector3(windowWidth + 0.05f, windowHeight + 0.1f, 1f);
         
-        // Dark semi-transparent background
         panelBackground = bgQuad.GetComponent<MeshRenderer>();
         Material bgMat = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
         bgMat.color = new Color(0.1f, 0.1f, 0.15f, 0.9f);
         panelBackground.material = bgMat;
-        
-        // Destroy collider
         Destroy(bgQuad.GetComponent<Collider>());
         
-        // Create world space canvas for UI elements
         GameObject canvasObj = new GameObject("TutorialCanvas");
         canvasObj.transform.SetParent(floatingPanel.transform);
         canvasObj.transform.localPosition = Vector3.zero;
@@ -103,10 +126,9 @@ public class FloatingTutorial : MonoBehaviour
         worldCanvas.renderMode = RenderMode.WorldSpace;
         
         RectTransform canvasRect = worldCanvas.GetComponent<RectTransform>();
-        canvasRect.sizeDelta = new Vector2(windowWidth * 1000, windowHeight * 1000); // In canvas units
-        canvasRect.localScale = new Vector3(0.001f, 0.001f, 0.001f); // Scale down to world units
+        canvasRect.sizeDelta = new Vector2(windowWidth * 1000, windowHeight * 1000);
+        canvasRect.localScale = new Vector3(0.001f, 0.001f, 0.001f);
         
-        // Add RawImage for video
         GameObject videoObj = new GameObject("VideoDisplay");
         videoObj.transform.SetParent(canvasObj.transform);
         videoDisplay = videoObj.AddComponent<RawImage>();
@@ -118,7 +140,6 @@ public class FloatingTutorial : MonoBehaviour
         videoRect.sizeDelta = new Vector2(windowWidth * 900, windowHeight * 700);
         videoRect.localPosition = Vector3.zero;
         
-        // Add skip text
         GameObject skipObj = new GameObject("SkipText");
         skipObj.transform.SetParent(canvasObj.transform);
         skipText = skipObj.AddComponent<TextMeshProUGUI>();
@@ -134,7 +155,6 @@ public class FloatingTutorial : MonoBehaviour
         skipRect.sizeDelta = new Vector2(600, 50);
         skipRect.localPosition = new Vector3(0, -windowHeight * 400, 0);
         
-        // Add title text
         GameObject titleObj = new GameObject("TitleText");
         titleObj.transform.SetParent(canvasObj.transform);
         TMP_Text titleText = titleObj.AddComponent<TextMeshProUGUI>();
@@ -163,7 +183,6 @@ public class FloatingTutorial : MonoBehaviour
         videoPlayer.isLooping = true;
         videoPlayer.renderMode = VideoRenderMode.RenderTexture;
         
-        // Create render texture
         RenderTexture rt = new RenderTexture(1280, 720, 0);
         rt.Create();
         videoPlayer.targetTexture = rt;
@@ -171,7 +190,6 @@ public class FloatingTutorial : MonoBehaviour
         if (videoDisplay != null)
             videoDisplay.texture = rt;
         
-        // Set video source
         if (tutorialClip != null)
         {
             videoPlayer.source = VideoSource.VideoClip;
@@ -190,21 +208,18 @@ public class FloatingTutorial : MonoBehaviour
     {
         if (!isShowing || playerHead == null) return;
         
-        // Calculate target position in front of player
         Vector3 forward = playerHead.forward;
-        forward.y = 0; // Keep horizontal
+        forward.y = 0;
         forward.Normalize();
         
         targetPosition = playerHead.position + forward * distanceFromPlayer;
         targetPosition.y = playerHead.position.y + heightOffset;
         
-        // Calculate target rotation to face player
         Vector3 lookDir = playerHead.position - targetPosition;
         lookDir.y = 0;
         if (lookDir.sqrMagnitude > 0.001f)
             targetRotation = Quaternion.LookRotation(-lookDir);
         
-        // Smoothly move and rotate
         floatingPanel.transform.position = Vector3.Lerp(
             floatingPanel.transform.position, 
             targetPosition, 
@@ -217,7 +232,6 @@ public class FloatingTutorial : MonoBehaviour
             Time.deltaTime * lookAtSpeed
         );
         
-        // Check for skip input
         if (allowSkip)
         {
             bool holding = OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger) ||
@@ -252,7 +266,6 @@ public class FloatingTutorial : MonoBehaviour
         
         if (floatingPanel != null)
         {
-            // Position immediately in front of player first
             if (playerHead != null)
             {
                 Vector3 forward = playerHead.forward;
@@ -276,7 +289,6 @@ public class FloatingTutorial : MonoBehaviour
             videoPlayer.Play();
         }
         
-        // Pause game systems
         if (conductorController != null)
             conductorController.enabled = false;
     }
@@ -299,8 +311,7 @@ public class FloatingTutorial : MonoBehaviour
     
     void OnVideoEnd(VideoPlayer vp)
     {
-        // Video finished playing once - could auto-complete or loop
-        // Currently set to loop, so this won't trigger unless changed
+        // Currently loops
     }
     
     void CompleteTutorial()
@@ -308,7 +319,6 @@ public class FloatingTutorial : MonoBehaviour
         tutorialCompleted = true;
         HideTutorial();
         
-        // Re-enable game systems
         if (conductorController != null)
             conductorController.enabled = true;
     }
@@ -318,4 +328,7 @@ public class FloatingTutorial : MonoBehaviour
         tutorialCompleted = false;
         ShowTutorial();
     }
+
+
+private void CreateTutorialUI() { Debug.Log("Creating Tutorial UI..."); GameObject canvasObj = new GameObject("TutorialCanvas"); canvasObj.transform.SetParent(transform, false); Canvas canvas = canvasObj.AddComponent<Canvas>(); canvas.renderMode = RenderMode.WorldSpace; canvas.worldCamera = Camera.main; CanvasScaler scaler = canvasObj.AddComponent<CanvasScaler>(); scaler.dynamicPixelsPerUnit = 100; canvasObj.AddComponent<GraphicRaycaster>(); RectTransform canvasRect = canvasObj.GetComponent<RectTransform>(); canvasRect.sizeDelta = new Vector2(800, 450); canvasRect.localPosition = Vector3.zero; canvasRect.localRotation = Quaternion.identity; canvasRect.localScale = new Vector3(0.001f, 0.001f, 0.001f); GameObject panelObj = new GameObject("Panel"); panelObj.transform.SetParent(canvasObj.transform, false); RectTransform panelRect = panelObj.AddComponent<RectTransform>(); panelRect.anchorMin = Vector2.zero; panelRect.anchorMax = Vector2.one; panelRect.sizeDelta = Vector2.zero; panelRect.anchoredPosition = Vector2.zero; Image panelImage = panelObj.AddComponent<Image>(); panelImage.color = new Color(0.1f, 0.1f, 0.1f, 0.95f); GameObject videoObj = new GameObject("VideoDisplay"); videoObj.transform.SetParent(panelObj.transform, false); RectTransform videoRect = videoObj.AddComponent<RectTransform>(); videoRect.anchorMin = new Vector2(0.05f, 0.15f); videoRect.anchorMax = new Vector2(0.95f, 0.95f); videoRect.sizeDelta = Vector2.zero; videoRect.anchoredPosition = Vector2.zero; RawImage videoImage = videoObj.AddComponent<RawImage>(); videoImage.color = Color.white; videoDisplay = videoImage; videoPlayer = gameObject.AddComponent<VideoPlayer>(); videoPlayer.playOnAwake = false; videoPlayer.renderMode = VideoRenderMode.RenderTexture; videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct; RenderTexture rt = new RenderTexture(1920, 1080, 0); rt.Create(); videoPlayer.targetTexture = rt; videoImage.texture = rt; if (tutorialClip != null) { videoPlayer.clip = tutorialClip; } else if (!string.IsNullOrEmpty(videoUrl)) { videoPlayer.url = videoUrl; } GameObject skipTextObj = new GameObject("SkipText"); skipTextObj.transform.SetParent(panelObj.transform, false); RectTransform skipRect = skipTextObj.AddComponent<RectTransform>(); skipRect.anchorMin = new Vector2(0.5f, 0.05f); skipRect.anchorMax = new Vector2(0.5f, 0.05f); skipRect.sizeDelta = new Vector2(300, 40); skipRect.anchoredPosition = Vector2.zero; skipText = skipTextObj.AddComponent<TextMeshProUGUI>(); skipText.text = "Hold B to skip"; skipText.fontSize = 24; skipText.alignment = TextAlignmentOptions.Center; skipText.color = Color.white; Debug.Log("Tutorial UI Created Successfully!"); }
 }

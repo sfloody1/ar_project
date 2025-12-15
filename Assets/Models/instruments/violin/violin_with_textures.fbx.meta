@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 0314a99914a864e92bbf3e06865d3856
+guid: 3f8ffb12e51374f2f8e9ca224d9dbea1
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _10397_ViolinblackSG
+    second: {fileID: 2100000, guid: f37f1daa887e2462d858f856d4b7876f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _10397_ViolinmetalSG
+    second: {fileID: 2100000, guid: ae1d4cf8b728e44d4bb52ef15a6d5f84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _10397_ViolinviolinSG
+    second: {fileID: 2100000, guid: 011820ee22e7840028ed0f06e9a20335, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 10397_Violin
+    second: {fileID: 2800000, guid: 7536712d1d20347ba9dc1529265835db, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

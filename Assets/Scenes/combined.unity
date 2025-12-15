@@ -8564,7 +8564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1122902892
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8629,7 +8629,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2036835633}
         m_TargetAssemblyTypeName: ConductorController, Assembly-CSharp
         m_MethodName: PlayTutorial
         m_Mode: 1
@@ -10298,7 +10298,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Play Tutorial
+  m_text: Play Tutorial (Y)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14685,44 +14685,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1916171831}
-  - component: {fileID: 1916171830}
+  - component: {fileID: 1916171832}
   m_Layer: 0
   m_Name: FloatingTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1916171830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1916171829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cae8c9264cf46d79d016d216a7d2a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FloatingTutorial
-  playerHead: {fileID: 1841311417}
-  videoPlayer: {fileID: 0}
-  videoDisplay: {fileID: 0}
-  skipText: {fileID: 0}
-  conductorController: {fileID: 2036835633}
-  audioManager: {fileID: 0}
-  tutorialButton: {fileID: 0}
-  distanceFromPlayer: 1.5
-  heightOffset: 0
-  followSpeed: 2
-  lookAtSpeed: 5
-  windowWidth: 0.8
-  windowHeight: 0.45
-  tutorialClip: {fileID: 32900000, guid: 3c30d2ce7c42f44da89b9865f43ca3a8, type: 3}
-  videoUrl: 
-  showOnStart: 1
-  allowSkip: 1
-  skipHoldTime: 1.5
+  m_IsActive: 1
 --- !u!4 &1916171831
 Transform:
   m_ObjectHideFlags: 0
@@ -14738,6 +14708,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916171832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916171829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996c77f87eafa4ba8b9e973152aa5ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialVideoPlayer
+  targetCanvas: {fileID: 0}
+  conductorController: {fileID: 0}
+  tutorialButton: {fileID: 0}
+  tutorialVideoPath: Assets/UI/44 meter tutorial.mp4
+  showOnStart: 1
+  anchoredPosition: {x: 0, y: -150}
+  videoSize: {x: 600, y: 400}
 --- !u!1 &1929206893
 GameObject:
   m_ObjectHideFlags: 0

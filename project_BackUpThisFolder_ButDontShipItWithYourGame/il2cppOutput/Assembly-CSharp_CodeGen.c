@@ -120,7 +120,10 @@ extern void U3CStartCountDownU3Ed__57_MoveNext_m5AB35C2619C26F09F81E9C21D9D19FF3
 extern void U3CStartCountDownU3Ed__57_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m47A32DDAC2A322DF4FBF854DAC11C31E7779B1EF (void);
 extern void U3CStartCountDownU3Ed__57_System_Collections_IEnumerator_Reset_m1D5C30AD86BA7307E8C78D5AA6363405E372F58A (void);
 extern void U3CStartCountDownU3Ed__57_System_Collections_IEnumerator_get_Current_m3EA7BC29524D612A176B1737955764E883127104 (void);
+extern void FloatingTutorial_OnEnable_m4217D227D7AF711808A3BD0B4E00F2C26C8851D2 (void);
 extern void FloatingTutorial_Start_mB46A4C12323EC0F7B187BE073E5AC6CD0C2C4D1A (void);
+extern void FloatingTutorial_ConnectTutorialButton_m19088FAFF1F5B5C90BCD8EAC25ADFAFE33972BD1 (void);
+extern void FloatingTutorial_OnTutorialButtonPressed_m1F66B52FBB2EE34158E35119F8C24B42381CD275 (void);
 extern void FloatingTutorial_CreateFloatingPanel_m0AA4FC036F8960B0DE26D3FF172F763E5054333A (void);
 extern void FloatingTutorial_SetupVideoPlayer_m0E61D797FF6F9F54C532A3726124A82E5A6EA290 (void);
 extern void FloatingTutorial_Update_mF507AEAB2D0057229F7D15172DBDD21A5114A2D8 (void);
@@ -130,6 +133,7 @@ extern void FloatingTutorial_SkipTutorial_m9407D950E7B90DBA7D1CC0454C8DF3A9E8382
 extern void FloatingTutorial_OnVideoEnd_mF10313FB5116118F3CE8F9E78F56467DAB5B5BDE (void);
 extern void FloatingTutorial_CompleteTutorial_m4C266C49FA903885049C2BF099BCAB91A06D3148 (void);
 extern void FloatingTutorial_ReplayTutorial_mB57EFD83D7D4F88936E11C6098488CE4BEE1DB1B (void);
+extern void FloatingTutorial_CreateTutorialUI_m24FA9DBF78AE018A628DDA00F0B1C47E9385F80B (void);
 extern void FloatingTutorial__ctor_mF2BC8B87DFF92B143EB0B3971E5F8D518EF0AA63 (void);
 extern void MusicStandSetup_Start_m1114AFF9FEAA99CAA8F3D69ADD34CDB123424E17 (void);
 extern void MusicStandSetup_SetupSheet_mDAF72AFC04B0FA1E5703573E2A0E0FBE1D9BA85F (void);
@@ -139,16 +143,11 @@ extern void PassthroughSetup_EnablePassthrough_mE1C73304DE88866418239A7A356D4789
 extern void PassthroughSetup_DisablePassthrough_m7828E3BE8B5CED2C6BBEEB47F054E47838E9EDBE (void);
 extern void PassthroughSetup_SetOpacity_m4D53500701692E9FC8740CFB67E4EBE01F661D0E (void);
 extern void PassthroughSetup__ctor_m179F65A07C2562687DBA873265888042123A024E (void);
-extern void SimpleTutorialManager_Start_mB2E319F272E2AF7083869E2FA148BF43FA64AFCE (void);
-extern void SimpleTutorialManager_ShowTutorial_m7A6745EB77807983EC38AE0581FBBA6EC0767EE5 (void);
-extern void SimpleTutorialManager_HideTutorial_mDC08457B2F8E31F0E93D3C7641DEFF5F3C40BEC6 (void);
-extern void SimpleTutorialManager_SkipTutorial_m4F7597980F76727B097638CC2EDBC900DFB8DCCE (void);
-extern void SimpleTutorialManager__ctor_m4E3AF5F4673FB4AFEE43CB39C5B53603253F39F9 (void);
 extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
 extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1 (void);
-static Il2CppMethodPointer s_methodPointers[141] = 
+static Il2CppMethodPointer s_methodPointers[140] = 
 {
 	ARInstrumentPlacer_Start_m7C5E111051DA36ACEA88032390AD6F559B6E32F0,
 	ARInstrumentPlacer_DelayedAutoPlace_m2F8D036AF6C7F4C5EDC90B9FE3E17076A14CB60F,
@@ -263,7 +262,10 @@ static Il2CppMethodPointer s_methodPointers[141] =
 	U3CStartCountDownU3Ed__57_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m47A32DDAC2A322DF4FBF854DAC11C31E7779B1EF,
 	U3CStartCountDownU3Ed__57_System_Collections_IEnumerator_Reset_m1D5C30AD86BA7307E8C78D5AA6363405E372F58A,
 	U3CStartCountDownU3Ed__57_System_Collections_IEnumerator_get_Current_m3EA7BC29524D612A176B1737955764E883127104,
+	FloatingTutorial_OnEnable_m4217D227D7AF711808A3BD0B4E00F2C26C8851D2,
 	FloatingTutorial_Start_mB46A4C12323EC0F7B187BE073E5AC6CD0C2C4D1A,
+	FloatingTutorial_ConnectTutorialButton_m19088FAFF1F5B5C90BCD8EAC25ADFAFE33972BD1,
+	FloatingTutorial_OnTutorialButtonPressed_m1F66B52FBB2EE34158E35119F8C24B42381CD275,
 	FloatingTutorial_CreateFloatingPanel_m0AA4FC036F8960B0DE26D3FF172F763E5054333A,
 	FloatingTutorial_SetupVideoPlayer_m0E61D797FF6F9F54C532A3726124A82E5A6EA290,
 	FloatingTutorial_Update_mF507AEAB2D0057229F7D15172DBDD21A5114A2D8,
@@ -273,6 +275,7 @@ static Il2CppMethodPointer s_methodPointers[141] =
 	FloatingTutorial_OnVideoEnd_mF10313FB5116118F3CE8F9E78F56467DAB5B5BDE,
 	FloatingTutorial_CompleteTutorial_m4C266C49FA903885049C2BF099BCAB91A06D3148,
 	FloatingTutorial_ReplayTutorial_mB57EFD83D7D4F88936E11C6098488CE4BEE1DB1B,
+	FloatingTutorial_CreateTutorialUI_m24FA9DBF78AE018A628DDA00F0B1C47E9385F80B,
 	FloatingTutorial__ctor_mF2BC8B87DFF92B143EB0B3971E5F8D518EF0AA63,
 	MusicStandSetup_Start_m1114AFF9FEAA99CAA8F3D69ADD34CDB123424E17,
 	MusicStandSetup_SetupSheet_mDAF72AFC04B0FA1E5703573E2A0E0FBE1D9BA85F,
@@ -282,17 +285,12 @@ static Il2CppMethodPointer s_methodPointers[141] =
 	PassthroughSetup_DisablePassthrough_m7828E3BE8B5CED2C6BBEEB47F054E47838E9EDBE,
 	PassthroughSetup_SetOpacity_m4D53500701692E9FC8740CFB67E4EBE01F661D0E,
 	PassthroughSetup__ctor_m179F65A07C2562687DBA873265888042123A024E,
-	SimpleTutorialManager_Start_mB2E319F272E2AF7083869E2FA148BF43FA64AFCE,
-	SimpleTutorialManager_ShowTutorial_m7A6745EB77807983EC38AE0581FBBA6EC0767EE5,
-	SimpleTutorialManager_HideTutorial_mDC08457B2F8E31F0E93D3C7641DEFF5F3C40BEC6,
-	SimpleTutorialManager_SkipTutorial_m4F7597980F76727B097638CC2EDBC900DFB8DCCE,
-	SimpleTutorialManager__ctor_m4E3AF5F4673FB4AFEE43CB39C5B53603253F39F9,
 	Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6,
 	Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_mE70FB23ACC1EA12ABC948AA22C2E78B2D0AA39B1,
 };
-static const int32_t s_InvokerIndices[141] = 
+static const int32_t s_InvokerIndices[140] = 
 {
 	19743,
 	19518,
@@ -414,7 +412,11 @@ static const int32_t s_InvokerIndices[141] =
 	19743,
 	19743,
 	19743,
+	19743,
+	19743,
+	19743,
 	15160,
+	19743,
 	19743,
 	19743,
 	19743,
@@ -428,11 +430,6 @@ static const int32_t s_InvokerIndices[141] =
 	19743,
 	19743,
 	19743,
-	19743,
-	19743,
-	19743,
-	19743,
-	19743,
 	31974,
 	19743,
 };
@@ -440,7 +437,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	141,
+	140,
 	s_methodPointers,
 	0,
 	NULL,

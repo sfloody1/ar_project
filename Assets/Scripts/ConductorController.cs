@@ -477,17 +477,17 @@ public void PlayTutorial() {
         float ra = Quaternion.Angle(setRightRot, rRot);
         float la = Quaternion.Angle(setLeftRot, lRot);
 
-        if (ra > 30f && la > 30f)
+        if (ra > 70f && la > 70f)
         {
             Flat.text = "Flatten both hands!";
             Flat.color = Color.red;
         }
-        else if (ra > 30f)
+        else if (ra > 70f)
         {
             Flat.text = "Flatten right hand!";
             Flat.color = Color.yellow;
         }
-        else if (la > 30f)
+        else if (la > 70f)
         {
             Flat.text = "Flatten left hand!";
             Flat.color = Color.yellow;
@@ -516,9 +516,9 @@ public void PlayTutorial() {
 
         totalPossibleScore += 3;
 
-        if (combined > 0.15f) StartCoroutine(ShowFeedback("Perfect!", Color.blue, 3));
-        else if (combined > 0.1f) StartCoroutine(ShowFeedback("Good", Color.green, 2));
-        else if (combined > 0.05f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
+        if (combined > 0.1f) StartCoroutine(ShowFeedback("Perfect!", Color.blue, 3));
+        else if (combined > 0.05f) StartCoroutine(ShowFeedback("Good", Color.green, 2));
+        else if (combined > 0.01f) StartCoroutine(ShowFeedback("Okay", Color.yellow, 1));
         else StartCoroutine(ShowFeedback("X", Color.red, 0));
 
         // Volume based on right hand movement magnitude

@@ -375,9 +375,10 @@ public class ConductorController : MonoBehaviour
                 beatChecked = true;
             }
 
-            if (ScoreShow != null)
+            if (ScoreShow != null){
                 ScoreShow.text = "Score: " + score;
-
+                ScoreShow.fontMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, .25f);
+            }
             if (ProgressBar != null && audioManager != null && audioManager.IsPlaying)
             {
                 float progress = Mathf.Clamp01(audioManager.SongTime / audioManager.SongLength);

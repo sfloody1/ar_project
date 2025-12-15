@@ -230,6 +230,7 @@ IL2CPP_EXTERN_C RuntimeClass* Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_i
 IL2CPP_EXTERN_C RuntimeClass* Physics_t1244C2983AEAFA149425AFFC3DF53BC91C18ED56_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CAnimateFinalScoreU3Ed__65_tBA318E6522013680E4FB114FDF133E8A4039401E_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CDelayedAutoPlaceU3Ed__12_t0F64419273C5AEC3773B387E0DEFA1DB83361727_il2cpp_TypeInfo_var;
@@ -383,6 +384,9 @@ struct U3CPrivateImplementationDetailsU3E_t0F5473E849A5A5185A9F4C5246F0C32816C49
 {
 };
 struct CommonUsages_t9208F514F1E77BE70AC53EFEC94D57EDDAF3B8E1  : public RuntimeObject
+{
+};
+struct ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F  : public RuntimeObject
 {
 };
 struct String_t  : public RuntimeObject
@@ -2716,6 +2720,83 @@ struct CommonUsages_t9208F514F1E77BE70AC53EFEC94D57EDDAF3B8E1_StaticFields
 	InputFeatureUsage_1_t311D0F42F1A7BF37D3CEAC15A53A1F24165F1848 ___indexTouch;
 	InputFeatureUsage_1_t311D0F42F1A7BF37D3CEAC15A53A1F24165F1848 ___thumbTouch;
 };
+struct ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_StaticFields
+{
+	int32_t ___ID_MainTex;
+	int32_t ___ID_FaceTex;
+	int32_t ___ID_FaceColor;
+	int32_t ___ID_FaceDilate;
+	int32_t ___ID_Shininess;
+	int32_t ___ID_OutlineOffset1;
+	int32_t ___ID_OutlineOffset2;
+	int32_t ___ID_OutlineOffset3;
+	int32_t ___ID_OutlineMode;
+	int32_t ___ID_IsoPerimeter;
+	int32_t ___ID_Softness;
+	int32_t ___ID_UnderlayColor;
+	int32_t ___ID_UnderlayOffsetX;
+	int32_t ___ID_UnderlayOffsetY;
+	int32_t ___ID_UnderlayDilate;
+	int32_t ___ID_UnderlaySoftness;
+	int32_t ___ID_UnderlayOffset;
+	int32_t ___ID_UnderlayIsoPerimeter;
+	int32_t ___ID_WeightNormal;
+	int32_t ___ID_WeightBold;
+	int32_t ___ID_OutlineTex;
+	int32_t ___ID_OutlineWidth;
+	int32_t ___ID_OutlineSoftness;
+	int32_t ___ID_OutlineColor;
+	int32_t ___ID_Outline2Color;
+	int32_t ___ID_Outline2Width;
+	int32_t ___ID_Padding;
+	int32_t ___ID_GradientScale;
+	int32_t ___ID_ScaleX;
+	int32_t ___ID_ScaleY;
+	int32_t ___ID_PerspectiveFilter;
+	int32_t ___ID_Sharpness;
+	int32_t ___ID_TextureWidth;
+	int32_t ___ID_TextureHeight;
+	int32_t ___ID_BevelAmount;
+	int32_t ___ID_GlowColor;
+	int32_t ___ID_GlowOffset;
+	int32_t ___ID_GlowPower;
+	int32_t ___ID_GlowOuter;
+	int32_t ___ID_GlowInner;
+	int32_t ___ID_LightAngle;
+	int32_t ___ID_EnvMap;
+	int32_t ___ID_EnvMatrix;
+	int32_t ___ID_EnvMatrixRotation;
+	int32_t ___ID_MaskCoord;
+	int32_t ___ID_ClipRect;
+	int32_t ___ID_MaskSoftnessX;
+	int32_t ___ID_MaskSoftnessY;
+	int32_t ___ID_VertexOffsetX;
+	int32_t ___ID_VertexOffsetY;
+	int32_t ___ID_UseClipRect;
+	int32_t ___ID_StencilID;
+	int32_t ___ID_StencilOp;
+	int32_t ___ID_StencilComp;
+	int32_t ___ID_StencilReadMask;
+	int32_t ___ID_StencilWriteMask;
+	int32_t ___ID_ShaderFlags;
+	int32_t ___ID_ScaleRatio_A;
+	int32_t ___ID_ScaleRatio_B;
+	int32_t ___ID_ScaleRatio_C;
+	String_t* ___Keyword_Bevel;
+	String_t* ___Keyword_Glow;
+	String_t* ___Keyword_Underlay;
+	String_t* ___Keyword_Ratios;
+	String_t* ___Keyword_MASK_SOFT;
+	String_t* ___Keyword_MASK_HARD;
+	String_t* ___Keyword_MASK_TEX;
+	String_t* ___Keyword_Outline;
+	String_t* ___ShaderTag_ZTestMode;
+	String_t* ___ShaderTag_CullMode;
+	float ___m_clamp;
+	bool ___isInitialized;
+	Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* ___k_ShaderRef_MobileSDF;
+	Shader_tADC867D36B7876EE22427FAA2CE485105F4EE692* ___k_ShaderRef_MobileBitmap;
+};
 struct String_t_StaticFields
 {
 	String_t* ___Empty;
@@ -3294,6 +3375,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_RestartGame_m48FC956
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckFlatness_mC209E1774625FB8AD679FFA21DF85266D9B20F88 (ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* __this, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___0_rRot, Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 ___1_lRot, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool AudioManager_get_IsPlaying_m3682AF32CB919CF8A20434CDFF3886239167BE61_inline (AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t AudioManager_get_CurrentBeat_m0ED09D1E07CA64AEF088CB287DB44D28D5BD11AB_inline (AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* TMP_Text_get_fontMaterial_m4EBEC9AF78B5B66C983A98F78948E753EE4DDFC6 (TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* __this, const RuntimeMethod* method) ;
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Material_SetFloat_m3ECFD92072347A8620254F014865984FA68211A8 (Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* __this, int32_t ___0_nameID, float ___1_value, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float AudioManager_get_SongTime_mDF73B914C5E9C6F546DE7159A392688BA5D02103_inline (AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* __this, const RuntimeMethod* method) ;
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR float AudioManager_get_SongLength_m9595F2FA50820B4ADC9E681E8395A005066D7945_inline (AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* __this, const RuntimeMethod* method) ;
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void U3CStartCountDownU3Ed__57__ctor_mDBFB51E00482819451F7DA1DC2C40D50CF0A3263 (U3CStartCountDownU3Ed__57_t748B0BAB086AC4ED3E98824EEA0787B978BCEF94* __this, int32_t ___0_U3CU3E1__state, const RuntimeMethod* method) ;
@@ -7368,6 +7451,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_Update_mCAB78B523A7D
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&CommonUsages_t9208F514F1E77BE70AC53EFEC94D57EDDAF3B8E1_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&OVRInput_t759D9CC8F14D8539AD78A0375A2306C39D77100A_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral1B00FE8D93C8DA57AEA59DB0FE808A827C3503B6);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
 		s_Il2CppMethodInitialized = true;
@@ -7658,21 +7742,21 @@ IL_0185:
 		bool L_43 = __this->___started;
 		if (!L_43)
 		{
-			goto IL_026b;
+			goto IL_0285;
 		}
 	}
 	{
 		bool L_44 = __this->___finished;
 		if (L_44)
 		{
-			goto IL_026b;
+			goto IL_0285;
 		}
 	}
 	{
 		bool L_45 = __this->___isCountingDown;
 		if (L_45)
 		{
-			goto IL_026b;
+			goto IL_0285;
 		}
 	}
 	{
@@ -7727,7 +7811,7 @@ IL_01e9:
 		L_56 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_55, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
 		if (!L_56)
 		{
-			goto IL_0217;
+			goto IL_0231;
 		}
 	}
 	{
@@ -7740,63 +7824,72 @@ IL_01e9:
 		L_60 = String_Concat_m9E3155FB84015C823606188F53B47CB44C444991(_stringLiteral1B00FE8D93C8DA57AEA59DB0FE808A827C3503B6, L_59, NULL);
 		NullCheck(L_57);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_57, L_60);
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:380>
+		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_61 = __this->___ScoreShow;
+		NullCheck(L_61);
+		Material_t18053F08F347D0DCA5E1140EC7EC4533DD8A14E3* L_62;
+		L_62 = TMP_Text_get_fontMaterial_m4EBEC9AF78B5B66C983A98F78948E753EE4DDFC6(L_61, NULL);
+		il2cpp_codegen_runtime_class_init_inline(ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_il2cpp_TypeInfo_var);
+		int32_t L_63 = ((ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_StaticFields*)il2cpp_codegen_static_fields_for(ShaderUtilities_t9BE0345DF949745FC0EB9A1119E204F2F129298F_il2cpp_TypeInfo_var))->___ID_OutlineWidth;
+		NullCheck(L_62);
+		Material_SetFloat_m3ECFD92072347A8620254F014865984FA68211A8(L_62, L_63, (0.25f), NULL);
 	}
 
-IL_0217:
+IL_0231:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:381>
-		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_61 = __this->___ProgressBar;
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:382>
+		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_64 = __this->___ProgressBar;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_62;
-		L_62 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_61, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_62)
+		bool L_65;
+		L_65 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_64, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_65)
 		{
-			goto IL_026b;
+			goto IL_0285;
 		}
 	}
 	{
-		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_63 = __this->___audioManager;
+		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_66 = __this->___audioManager;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		bool L_64;
-		L_64 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_63, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
-		if (!L_64)
+		bool L_67;
+		L_67 = Object_op_Inequality_mD0BE578448EAA61948F25C32F8DD55AB1F778602(L_66, (Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C*)NULL, NULL);
+		if (!L_67)
 		{
-			goto IL_026b;
+			goto IL_0285;
 		}
 	}
 	{
-		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_65 = __this->___audioManager;
-		NullCheck(L_65);
-		bool L_66;
-		L_66 = AudioManager_get_IsPlaying_m3682AF32CB919CF8A20434CDFF3886239167BE61_inline(L_65, NULL);
-		if (!L_66)
+		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_68 = __this->___audioManager;
+		NullCheck(L_68);
+		bool L_69;
+		L_69 = AudioManager_get_IsPlaying_m3682AF32CB919CF8A20434CDFF3886239167BE61_inline(L_68, NULL);
+		if (!L_69)
 		{
-			goto IL_026b;
+			goto IL_0285;
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:383>
-		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_67 = __this->___audioManager;
-		NullCheck(L_67);
-		float L_68;
-		L_68 = AudioManager_get_SongTime_mDF73B914C5E9C6F546DE7159A392688BA5D02103_inline(L_67, NULL);
-		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_69 = __this->___audioManager;
-		NullCheck(L_69);
-		float L_70;
-		L_70 = AudioManager_get_SongLength_m9595F2FA50820B4ADC9E681E8395A005066D7945_inline(L_69, NULL);
-		float L_71;
-		L_71 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(((float)(L_68/L_70)), NULL);
-		V_6 = L_71;
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:384>
-		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_72 = __this->___ProgressBar;
-		float L_73 = V_6;
+		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_70 = __this->___audioManager;
+		NullCheck(L_70);
+		float L_71;
+		L_71 = AudioManager_get_SongTime_mDF73B914C5E9C6F546DE7159A392688BA5D02103_inline(L_70, NULL);
+		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_72 = __this->___audioManager;
 		NullCheck(L_72);
-		VirtualActionInvoker1< float >::Invoke(47, L_72, L_73);
+		float L_73;
+		L_73 = AudioManager_get_SongLength_m9595F2FA50820B4ADC9E681E8395A005066D7945_inline(L_72, NULL);
+		float L_74;
+		L_74 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(((float)(L_71/L_73)), NULL);
+		V_6 = L_74;
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:385>
+		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_75 = __this->___ProgressBar;
+		float L_76 = V_6;
+		NullCheck(L_75);
+		VirtualActionInvoker1< float >::Invoke(47, L_75, L_76);
 	}
 
-IL_026b:
+IL_0285:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:388>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:389>
 		return;
 	}
 }
@@ -7862,7 +7955,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckFlatness_mC209E
 	float V_0 = 0.0f;
 	float V_1 = 0.0f;
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:454>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:455>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_0 = __this->___Flat;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -7873,25 +7966,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckFlatness_mC209E
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:454>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:455>
 		return;
 	}
 
 IL_000f:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:456>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:457>
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_2 = __this->___setRightRot;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_3 = ___0_rRot;
 		float L_4;
 		L_4 = Quaternion_Angle_mAADDBB3C30736B4C7B75CF3A241C1CF5E0386C26_inline(L_2, L_3, NULL);
 		V_0 = L_4;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:457>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:458>
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_5 = __this->___setLeftRot;
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_6 = ___1_lRot;
 		float L_7;
 		L_7 = Quaternion_Angle_mAADDBB3C30736B4C7B75CF3A241C1CF5E0386C26_inline(L_5, L_6, NULL);
 		V_1 = L_7;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:459>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:460>
 		float L_8 = V_0;
 		if ((!(((float)L_8) > ((float)(30.0f)))))
 		{
@@ -7906,11 +7999,11 @@ IL_000f:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:461>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:462>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_10 = __this->___Flat;
 		NullCheck(L_10);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_10, _stringLiteral5BB1FA5C6CAB510437F95AC861C7DB3C5067237F);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:462>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:463>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_11 = __this->___Flat;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_12;
 		L_12 = Color_get_red_mA2E53E7173FDC97E68E335049AB0FAAEE43A844D_inline(NULL);
@@ -7921,7 +8014,7 @@ IL_000f:
 
 IL_005a:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:464>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:465>
 		float L_13 = V_0;
 		if ((!(((float)L_13) > ((float)(30.0f)))))
 		{
@@ -7929,11 +8022,11 @@ IL_005a:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:466>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:467>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_14 = __this->___Flat;
 		NullCheck(L_14);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_14, _stringLiteral8BB6B000BDD5A4F25108F840B5FDB75EA79FA600);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:467>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:468>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_15 = __this->___Flat;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_16;
 		L_16 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
@@ -7944,7 +8037,7 @@ IL_005a:
 
 IL_0083:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:469>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:470>
 		float L_17 = V_1;
 		if ((!(((float)L_17) > ((float)(30.0f)))))
 		{
@@ -7952,11 +8045,11 @@ IL_0083:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:471>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:472>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_18 = __this->___Flat;
 		NullCheck(L_18);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_18, _stringLiteral74FFAE64176C33EEE1188B2286F8503FA8897F40);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:472>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:473>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_19 = __this->___Flat;
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_20;
 		L_20 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
@@ -7967,11 +8060,11 @@ IL_0083:
 
 IL_00ac:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:474>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:475>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_21 = __this->___Flat;
 		NullCheck(L_21);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_21, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:475>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:476>
 		return;
 	}
 }
@@ -7993,7 +8086,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckGesture_m2BB4EA
 	float V_1 = 0.0f;
 	float V_2 = 0.0f;
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:480>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:481>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___RightControllerTransform;
 		NullCheck(L_0);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1;
@@ -8002,7 +8095,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckGesture_m2BB4EA
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_1, L_2, NULL);
 		V_0 = L_3;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:481>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:482>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = __this->___LeftControllerTransform;
 		NullCheck(L_4);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_5;
@@ -8010,19 +8103,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckGesture_m2BB4EA
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_6 = __this->___prevLeftPos;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7;
 		L_7 = Vector3_op_Subtraction_mE42023FF80067CB44A1D4A27EB7CF2B24CABB828_inline(L_5, L_6, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:484>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:485>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = __this->___RightControllerTransform;
 		NullCheck(L_8);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_8, NULL);
 		__this->___prevRightPos = L_9;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:485>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:486>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = __this->___LeftControllerTransform;
 		NullCheck(L_10);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11;
 		L_11 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_10, NULL);
 		__this->___prevLeftPos = L_11;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:488>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:489>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_12;
 		L_12 = Vector3_get_normalized_m736BBF65D5CDA7A18414370D15B4DFCC1E466F07_inline((&V_0), NULL);
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_13 = __this->___RightPattern;
@@ -8032,19 +8125,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckGesture_m2BB4EA
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_16 = (L_13)->GetAt(static_cast<il2cpp_array_size_t>(L_15));
 		float L_17;
 		L_17 = Vector3_Dot_mBB86BB940AA0A32FA7D3C02AC42E5BC7095A5D52_inline(L_12, L_16, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:491>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:492>
 		float L_18;
 		L_18 = Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline((&V_0), NULL);
 		float L_19;
 		L_19 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(((float)(L_18/(0.200000003f))), NULL);
 		V_1 = L_19;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:494>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:495>
 		float L_20 = V_1;
 		V_2 = ((float)il2cpp_codegen_multiply(L_17, L_20));
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:496>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:497>
 		int32_t L_21 = __this->___totalPossibleScore;
 		__this->___totalPossibleScore = ((int32_t)il2cpp_codegen_add(L_21, 3));
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:498>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:499>
 		float L_22 = V_2;
 		if ((!(((float)L_22) > ((float)(0.150000006f)))))
 		{
@@ -8052,7 +8145,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckGesture_m2BB4EA
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:498>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:499>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_23;
 		L_23 = Color_get_blue_mF04A26CE61D6DA3C0D8B1C4720901B1028C7AB87_inline(NULL);
 		RuntimeObject* L_24;
@@ -8064,7 +8157,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_CheckGesture_m2BB4EA
 
 IL_00ae:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:499>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:500>
 		float L_26 = V_2;
 		if ((!(((float)L_26) > ((float)(0.100000001f)))))
 		{
@@ -8072,7 +8165,7 @@ IL_00ae:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:499>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:500>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_27;
 		L_27 = Color_get_green_mEB001F2CD8C68C6BBAEF9101990B779D3AA2A6EF_inline(NULL);
 		RuntimeObject* L_28;
@@ -8084,7 +8177,7 @@ IL_00ae:
 
 IL_00d0:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:500>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:501>
 		float L_30 = V_2;
 		if ((!(((float)L_30) > ((float)(0.0500000007f)))))
 		{
@@ -8092,7 +8185,7 @@ IL_00d0:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:500>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:501>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_31;
 		L_31 = Color_get_yellow_m66637FA14383E8D74F24AE256B577CE1D55D469F_inline(NULL);
 		RuntimeObject* L_32;
@@ -8104,7 +8197,7 @@ IL_00d0:
 
 IL_00f2:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:501>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:502>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_34;
 		L_34 = Color_get_red_mA2E53E7173FDC97E68E335049AB0FAAEE43A844D_inline(NULL);
 		RuntimeObject* L_35;
@@ -8115,7 +8208,7 @@ IL_00f2:
 
 IL_010a:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:504>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:505>
 		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_37 = __this->___audioManager;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_38;
@@ -8126,7 +8219,7 @@ IL_010a:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:505>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:506>
 		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_39 = __this->___audioManager;
 		float L_40;
 		L_40 = Vector3_get_magnitude_mF0D6017E90B345F1F52D1CC564C640F1A847AF2D_inline((&V_0), NULL);
@@ -8138,7 +8231,7 @@ IL_010a:
 
 IL_013f:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:507>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:508>
 		return;
 	}
 }
@@ -8185,15 +8278,15 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_ShowFinalScore_m6BEC
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:526>
-		__this->___started = (bool)0;
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:527>
+		__this->___started = (bool)0;
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:528>
 		__this->___finished = (bool)1;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:529>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:530>
 		MonoBehaviour_StopAllCoroutines_m872033451D42013A99867D09337490017E9ED318(__this, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:531>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:532>
 		ConductorController_clearText_m397DC72B456B8B723585BED89A20CC5DE751FEFC(__this, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:533>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:534>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_0 = __this->___FinalScore;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8204,7 +8297,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_ShowFinalScore_m6BEC
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:534>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:535>
 		int32_t L_2 = __this->___score;
 		int32_t L_3 = __this->___totalPossibleScore;
 		RuntimeObject* L_4;
@@ -8215,7 +8308,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_ShowFinalScore_m6BEC
 
 IL_0041:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:537>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:538>
 		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_6 = __this->___ProgressBar;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_7;
@@ -8226,7 +8319,7 @@ IL_0041:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:537>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:538>
 		Slider_t87EA570E3D6556CABF57456C2F3873FFD86E652F* L_8 = __this->___ProgressBar;
 		NullCheck(L_8);
 		VirtualActionInvoker1< float >::Invoke(47, L_8, (1.0f));
@@ -8234,7 +8327,7 @@ IL_0041:
 
 IL_005f:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:539>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:540>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_9 = __this->___StartText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_10;
@@ -8245,7 +8338,7 @@ IL_005f:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:540>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:541>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_11 = __this->___StartText;
 		NullCheck(L_11);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_11, _stringLiteralAC2C818D6B5656AD8DF91D61A388F177CD647E23);
@@ -8253,12 +8346,12 @@ IL_005f:
 
 IL_007d:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:543>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:544>
 		RuntimeObject* L_12;
 		L_12 = ConductorController_EnableRestart_m9D94EB2E017C17DB7E355E0C9728B737ED2FCFE0(__this, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_13;
 		L_13 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_12, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:545>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:546>
 		return;
 	}
 }
@@ -8292,7 +8385,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_clearText_m397DC72B4
 		s_Il2CppMethodInitialized = true;
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:553>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:554>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_0 = __this->___Feedback;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8303,11 +8396,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_clearText_m397DC72B4
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:554>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:555>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_2 = __this->___Feedback;
 		NullCheck(L_2);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_2, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:555>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:556>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_3 = __this->___Feedback;
 		NullCheck(L_3);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_3, (bool)0, (bool)0);
@@ -8315,7 +8408,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_clearText_m397DC72B4
 
 IL_002b:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:557>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:558>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_4 = __this->___Flat;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_5;
@@ -8326,11 +8419,11 @@ IL_002b:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:558>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:559>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_6 = __this->___Flat;
 		NullCheck(L_6);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_6, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:559>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:560>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_7 = __this->___Flat;
 		NullCheck(L_7);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_7, (bool)0, (bool)0);
@@ -8338,7 +8431,7 @@ IL_002b:
 
 IL_0056:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:561>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:562>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_8 = __this->___ScoreShow;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_9;
@@ -8349,11 +8442,11 @@ IL_0056:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:562>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:563>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_10 = __this->___ScoreShow;
 		NullCheck(L_10);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_10, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:563>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:564>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_11 = __this->___ScoreShow;
 		NullCheck(L_11);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_11, (bool)0, (bool)0);
@@ -8361,7 +8454,7 @@ IL_0056:
 
 IL_0081:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:565>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:566>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_12 = __this->___BeatIndicator;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_13;
@@ -8372,11 +8465,11 @@ IL_0081:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:566>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:567>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_14 = __this->___BeatIndicator;
 		NullCheck(L_14);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_14, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:567>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:568>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_15 = __this->___BeatIndicator;
 		NullCheck(L_15);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_15, (bool)0, (bool)0);
@@ -8384,7 +8477,7 @@ IL_0081:
 
 IL_00ac:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:569>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:570>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_16 = __this->___NextBeatText;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_17;
@@ -8395,11 +8488,11 @@ IL_00ac:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:570>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:571>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_18 = __this->___NextBeatText;
 		NullCheck(L_18);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_18, _stringLiteralDA39A3EE5E6B4B0D3255BFEF95601890AFD80709);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:571>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:572>
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_19 = __this->___NextBeatText;
 		NullCheck(L_19);
 		VirtualActionInvoker2< bool, bool >::Invoke(106, L_19, (bool)0, (bool)0);
@@ -8407,7 +8500,7 @@ IL_00ac:
 
 IL_00d7:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:573>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:574>
 		return;
 	}
 }
@@ -8442,19 +8535,19 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* ConductorController_AnimateFin
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_ResetGameState_m4400588B25534B82FC6A389C99F44518FB87BB42 (ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* __this, const RuntimeMethod* method) 
 {
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:616>
-		ConductorController_InitializeUI_mF7657C5E9E4B0E42CAA88545F1D1B84D8629B8C3(__this, NULL);
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:617>
-		__this->___finished = (bool)0;
+		ConductorController_InitializeUI_mF7657C5E9E4B0E42CAA88545F1D1B84D8629B8C3(__this, NULL);
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:618>
-		__this->___started = (bool)0;
+		__this->___finished = (bool)0;
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:619>
-		__this->___score = 0;
+		__this->___started = (bool)0;
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:620>
-		__this->___totalPossibleScore = 0;
+		__this->___score = 0;
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:621>
-		__this->___canRestart = (bool)0;
+		__this->___totalPossibleScore = 0;
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:622>
+		__this->___canRestart = (bool)0;
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:623>
 		return;
 	}
 }
@@ -8469,11 +8562,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_RestartGame_m48FC956
 	}
 	int32_t V_0 = 0;
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:626>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:627>
 		MonoBehaviour_StopAllCoroutines_m872033451D42013A99867D09337490017E9ED318(__this, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:628>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:629>
 		ConductorController_ResetGameState_m4400588B25534B82FC6A389C99F44518FB87BB42(__this, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:630>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:631>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_0 = __this->___RightControllerTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_1;
@@ -8484,13 +8577,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_RestartGame_m48FC956
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:632>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:633>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_2 = __this->___RightControllerTransform;
 		NullCheck(L_2);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_3;
 		L_3 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_2, NULL);
 		__this->___setRightPos = L_3;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:633>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:634>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_4 = __this->___RightControllerTransform;
 		NullCheck(L_4);
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_5;
@@ -8500,7 +8593,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ConductorController_RestartGame_m48FC956
 
 IL_003c:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:635>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:636>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_6 = __this->___LeftControllerTransform;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		bool L_7;
@@ -8511,13 +8604,13 @@ IL_003c:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:637>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:638>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_8 = __this->___LeftControllerTransform;
 		NullCheck(L_8);
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9;
 		L_9 = Transform_get_position_m69CD5FA214FDAE7BB701552943674846C220FDE1(L_8, NULL);
 		__this->___setLeftPos = L_9;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:638>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:639>
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_10 = __this->___LeftControllerTransform;
 		NullCheck(L_10);
 		Quaternion_tDA59F214EF07D7700B26E40E562F267AF7306974 L_11;
@@ -8527,35 +8620,35 @@ IL_003c:
 
 IL_006c:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:641>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:642>
 		V_0 = 0;
 		goto IL_0096;
 	}
 
 IL_0070:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:643>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:644>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_12 = __this->___rightHistory;
 		int32_t L_13 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_14;
 		L_14 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_12);
 		(L_12)->SetAt(static_cast<il2cpp_array_size_t>(L_13), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_14);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:644>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:645>
 		Vector3U5BU5D_tFF1859CCE176131B909E2044F76443064254679C* L_15 = __this->___leftHistory;
 		int32_t L_16 = V_0;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_17;
 		L_17 = Vector3_get_zero_m0C1249C3F25B1C70EAD3CC8B31259975A457AE39_inline(NULL);
 		NullCheck(L_15);
 		(L_15)->SetAt(static_cast<il2cpp_array_size_t>(L_16), (Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2)L_17);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:641>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:642>
 		int32_t L_18 = V_0;
 		V_0 = ((int32_t)il2cpp_codegen_add(L_18, 1));
 	}
 
 IL_0096:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:641>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:642>
 		int32_t L_19 = V_0;
 		if ((((int32_t)L_19) < ((int32_t)((int32_t)30))))
 		{
@@ -8563,9 +8656,9 @@ IL_0096:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:646>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:647>
 		__this->___historyIndex = 0;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:648>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:649>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_20 = __this->___rightMoveCoroutine;
 		if (!L_20)
 		{
@@ -8573,14 +8666,14 @@ IL_0096:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:648>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:649>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_21 = __this->___rightMoveCoroutine;
 		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_21, NULL);
 	}
 
 IL_00b6:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:649>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:650>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_22 = __this->___leftMoveCoroutine;
 		if (!L_22)
 		{
@@ -8588,19 +8681,19 @@ IL_00b6:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:649>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:650>
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_23 = __this->___leftMoveCoroutine;
 		MonoBehaviour_StopCoroutine_mB0FC91BE84203BD8E360B3FBAE5B958B4C5ED22A(__this, L_23, NULL);
 	}
 
 IL_00ca:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:652>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:653>
 		RuntimeObject* L_24;
 		L_24 = ConductorController_StartCountDown_m8A137EC0D05AF7733C35FC3EAF0BDD44FA5BB115(__this, NULL);
 		Coroutine_t85EA685566A254C23F3FD77AB5BDFFFF8799596B* L_25;
 		L_25 = MonoBehaviour_StartCoroutine_m4CAFF732AA28CD3BDC5363B44A863575530EC812(__this, L_24, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:653>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:654>
 		return;
 	}
 }
@@ -8765,7 +8858,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CAnimateFinalScoreU3Ed__65_MoveNext_mE
 IL_001a:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:577>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:578>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_4 = V_1;
 		NullCheck(L_4);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_5 = L_4->___FinalScore;
@@ -8778,35 +8871,35 @@ IL_001a:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:577>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:578>
 		return (bool)0;
 	}
 
 IL_0031:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:579>
-		__this->___U3CdurationU3E5__2 = (1.5f);
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:580>
-		__this->___U3CelapsedU3E5__3 = (0.0f);
+		__this->___U3CdurationU3E5__2 = (1.5f);
 		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:581>
+		__this->___U3CelapsedU3E5__3 = (0.0f);
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:582>
 		V_2 = 0;
 		goto IL_0171;
 	}
 
 IL_004e:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:585>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:586>
 		float L_7 = __this->___U3CelapsedU3E5__3;
 		float L_8;
 		L_8 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___U3CelapsedU3E5__3 = ((float)il2cpp_codegen_add(L_7, L_8));
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:586>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:587>
 		float L_9 = __this->___U3CelapsedU3E5__3;
 		float L_10 = __this->___U3CdurationU3E5__2;
 		float L_11;
 		L_11 = Mathf_Clamp01_mA7E048DBDA832D399A581BE4D6DED9FA44CE0F14_inline(((float)(L_9/L_10)), NULL);
 		V_4 = L_11;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:587>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:588>
 		int32_t L_12 = __this->___finalScore;
 		float L_13 = V_4;
 		float L_14;
@@ -8814,7 +8907,7 @@ IL_004e:
 		int32_t L_15;
 		L_15 = Mathf_RoundToInt_m60F8B66CF27F1FA75AA219342BD184B75771EB4B_inline(L_14, NULL);
 		V_2 = L_15;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:588>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:589>
 		int32_t L_16 = __this->___totalPossibleScore;
 		if ((((int32_t)L_16) > ((int32_t)0)))
 		{
@@ -8836,7 +8929,7 @@ IL_009d:
 IL_00a7:
 	{
 		V_5 = G_B9_0;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:590>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:591>
 		float L_19 = V_5;
 		if ((!(((float)L_19) >= ((float)(0.899999976f)))))
 		{
@@ -8844,7 +8937,7 @@ IL_00a7:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:590>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:591>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_20 = V_1;
 		NullCheck(L_20);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_21 = L_20->___FinalScore;
@@ -8857,7 +8950,7 @@ IL_00a7:
 
 IL_00c4:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:591>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:592>
 		float L_23 = V_5;
 		if ((!(((float)L_23) >= ((float)(0.800000012f)))))
 		{
@@ -8865,7 +8958,7 @@ IL_00c4:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:591>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:592>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_24 = V_1;
 		NullCheck(L_24);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_25 = L_24->___FinalScore;
@@ -8878,7 +8971,7 @@ IL_00c4:
 
 IL_00df:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:592>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:593>
 		float L_27 = V_5;
 		if ((!(((float)L_27) >= ((float)(0.699999988f)))))
 		{
@@ -8886,7 +8979,7 @@ IL_00df:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:592>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:593>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_28 = V_1;
 		NullCheck(L_28);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_29 = L_28->___FinalScore;
@@ -8899,7 +8992,7 @@ IL_00df:
 
 IL_00fa:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:593>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:594>
 		float L_31 = V_5;
 		if ((!(((float)L_31) >= ((float)(0.600000024f)))))
 		{
@@ -8907,7 +9000,7 @@ IL_00fa:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:593>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:594>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_32 = V_1;
 		NullCheck(L_32);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_33 = L_32->___FinalScore;
@@ -8921,7 +9014,7 @@ IL_00fa:
 
 IL_0124:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:594>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:595>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_35 = V_1;
 		NullCheck(L_35);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_36 = L_35->___FinalScore;
@@ -8933,7 +9026,7 @@ IL_0124:
 
 IL_0134:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:596>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:597>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_38 = V_1;
 		NullCheck(L_38);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_39 = L_38->___FinalScore;
@@ -8947,7 +9040,7 @@ IL_0134:
 		L_46 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral28404DD00FE9D1412F96D41189D495FBBF2E672C, L_42, L_45, NULL);
 		NullCheck(L_39);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_39, L_46);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:598>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:599>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
 		__this->___U3CU3E1__state = 1;
@@ -8961,7 +9054,7 @@ IL_016a:
 
 IL_0171:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:583>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:584>
 		float L_47 = __this->___U3CelapsedU3E5__3;
 		float L_48 = __this->___U3CdurationU3E5__2;
 		if ((((float)L_47) < ((float)L_48)))
@@ -8970,7 +9063,7 @@ IL_0171:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:601>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:602>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_49 = V_1;
 		NullCheck(L_49);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_50 = L_49->___FinalScore;
@@ -8984,7 +9077,7 @@ IL_0171:
 		L_57 = String_Format_mFB7DA489BD99F4670881FF50EC017BFB0A5C0987(_stringLiteral28404DD00FE9D1412F96D41189D495FBBF2E672C, L_53, L_56, NULL);
 		NullCheck(L_50);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_50, L_57);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:602>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:603>
 		int32_t L_58 = __this->___totalPossibleScore;
 		if ((((int32_t)L_58) > ((int32_t)0)))
 		{
@@ -9006,7 +9099,7 @@ IL_01bd:
 IL_01cc:
 	{
 		V_3 = G_B24_0;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:603>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:604>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_61 = V_1;
 		NullCheck(L_61);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_62 = L_61->___FinalGrade;
@@ -9019,7 +9112,7 @@ IL_01cc:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:605>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:606>
 		float L_64 = V_3;
 		if ((!(((float)L_64) >= ((float)(0.75f)))))
 		{
@@ -9027,13 +9120,13 @@ IL_01cc:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:605>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:606>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_65 = V_1;
 		NullCheck(L_65);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_66 = L_65->___FinalGrade;
 		NullCheck(L_66);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_66, _stringLiteralEF420ABFDDBDA7B9EE665D85EF62E4A437554003);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:605>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:606>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_67 = V_1;
 		NullCheck(L_67);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_68 = L_67->___FinalGrade;
@@ -9046,7 +9139,7 @@ IL_01cc:
 
 IL_020b:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:606>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:607>
 		float L_70 = V_3;
 		if ((!(((float)L_70) >= ((float)(0.600000024f)))))
 		{
@@ -9054,13 +9147,13 @@ IL_020b:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:606>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:607>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_71 = V_1;
 		NullCheck(L_71);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_72 = L_71->___FinalGrade;
 		NullCheck(L_72);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_72, _stringLiteralAB69FA1AB6BB831506EFCAD83900FEE751E85F6F);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:606>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:607>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_73 = V_1;
 		NullCheck(L_73);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_74 = L_73->___FinalGrade;
@@ -9073,7 +9166,7 @@ IL_020b:
 
 IL_0238:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:607>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:608>
 		float L_76 = V_3;
 		if ((!(((float)L_76) >= ((float)(0.449999988f)))))
 		{
@@ -9081,13 +9174,13 @@ IL_0238:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:607>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:608>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_77 = V_1;
 		NullCheck(L_77);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_78 = L_77->___FinalGrade;
 		NullCheck(L_78);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_78, _stringLiteralBF86C9E9E7FE0EF09A2EAE8066CDC31F859254CC);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:607>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:608>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_79 = V_1;
 		NullCheck(L_79);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_80 = L_79->___FinalGrade;
@@ -9100,7 +9193,7 @@ IL_0238:
 
 IL_0262:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:608>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:609>
 		float L_82 = V_3;
 		if ((!(((float)L_82) >= ((float)(0.300000012f)))))
 		{
@@ -9108,13 +9201,13 @@ IL_0262:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:608>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:609>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_83 = V_1;
 		NullCheck(L_83);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_84 = L_83->___FinalGrade;
 		NullCheck(L_84);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_84, _stringLiteralA019FB7F17AA36A9743C530E1F11D5613B8B1158);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:608>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:609>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_85 = V_1;
 		NullCheck(L_85);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_86 = L_85->___FinalGrade;
@@ -9128,13 +9221,13 @@ IL_0262:
 
 IL_029b:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:609>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:610>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_88 = V_1;
 		NullCheck(L_88);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_89 = L_88->___FinalGrade;
 		NullCheck(L_89);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_89, _stringLiteralFD60316EE3ADB7B16A998DF8AE0D68C293F6622E);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:609>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:610>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_90 = V_1;
 		NullCheck(L_90);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_91 = L_90->___FinalGrade;
@@ -9146,7 +9239,7 @@ IL_029b:
 
 IL_02bb:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:612>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:613>
 		return (bool)0;
 	}
 }
@@ -9236,7 +9329,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CEnableRestartU3Ed__63_MoveNext_m5361F
 IL_0017:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:548>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:549>
 		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_4 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_4, (0.200000003f), NULL);
 		__this->___U3CU3E2__current = L_4;
@@ -9248,11 +9341,11 @@ IL_0017:
 IL_0037:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:549>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:550>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_5 = V_1;
 		NullCheck(L_5);
 		L_5->___canRestart = (bool)1;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:550>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:551>
 		return (bool)0;
 	}
 }
@@ -9348,7 +9441,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CFadeOutPhotoU3Ed__58_MoveNext_m6618BC
 IL_0022:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:427>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:428>
 		float L_3 = __this->___displayTime;
 		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_4 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_4, L_3, NULL);
@@ -9361,7 +9454,7 @@ IL_0022:
 IL_0043:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:430>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:431>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_5 = V_1;
 		NullCheck(L_5);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_6 = L_5->___photoImage;
@@ -9374,7 +9467,7 @@ IL_0043:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:432>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:433>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_8 = V_1;
 		NullCheck(L_8);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_9 = L_8->___photoImage;
@@ -9382,25 +9475,25 @@ IL_0043:
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F L_10;
 		L_10 = VirtualFuncInvoker0< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(22, L_9);
 		__this->___U3CstartColorU3E5__2 = L_10;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:433>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:434>
 		__this->___U3CelapsedU3E5__3 = (0.0f);
 		goto IL_00f1;
 	}
 
 IL_0079:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:437>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:438>
 		float L_11 = __this->___U3CelapsedU3E5__3;
 		float L_12;
 		L_12 = Time_get_deltaTime_mC3195000401F0FD167DD2F948FD2BC58330D0865(NULL);
 		__this->___U3CelapsedU3E5__3 = ((float)il2cpp_codegen_add(L_11, L_12));
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:438>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:439>
 		float L_13 = __this->___U3CelapsedU3E5__3;
 		float L_14 = __this->___fadeTime;
 		float L_15;
 		L_15 = Mathf_Lerp_m47EF2FFB7647BD0A1FDC26DC03E28B19812139B5_inline((1.0f), (0.0f), ((float)(L_13/L_14)), NULL);
 		V_2 = L_15;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:439>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:440>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_16 = V_1;
 		NullCheck(L_16);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_17 = L_16->___photoImage;
@@ -9416,7 +9509,7 @@ IL_0079:
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_25), L_19, L_21, L_23, L_24, NULL);
 		NullCheck(L_17);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_17, L_25);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:440>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:441>
 		__this->___U3CU3E2__current = NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E2__current), (void*)NULL);
 		__this->___U3CU3E1__state = 2;
@@ -9430,7 +9523,7 @@ IL_00ea:
 
 IL_00f1:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:435>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:436>
 		float L_26 = __this->___U3CelapsedU3E5__3;
 		float L_27 = __this->___fadeTime;
 		if ((((float)L_26) < ((float)L_27)))
@@ -9439,7 +9532,7 @@ IL_00f1:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:444>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:445>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_28 = V_1;
 		NullCheck(L_28);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_29 = L_28->___photoImage;
@@ -9448,7 +9541,7 @@ IL_00f1:
 		L_30 = Component_get_gameObject_m57AEFBB14DB39EC476F740BA000E170355DE691B(L_29, NULL);
 		NullCheck(L_30);
 		GameObject_SetActive_m638E92E1E75E519E5B24CF150B08CA8E0CDFAB92(L_30, (bool)0, NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:446>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:447>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_31 = V_1;
 		NullCheck(L_31);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_32 = L_31->___photoImage;
@@ -9463,14 +9556,14 @@ IL_00f1:
 		Color__ctor_m3786F0D6E510D9CFA544523A955870BD2A514C8C_inline((&L_39), L_34, L_36, L_38, (1.0f), NULL);
 		NullCheck(L_32);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, L_32, L_39);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:447>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:448>
 		Color_tD001788D726C3A7F1379BEED0260B9591F440C1F* L_40 = (Color_tD001788D726C3A7F1379BEED0260B9591F440C1F*)(&__this->___U3CstartColorU3E5__2);
 		il2cpp_codegen_initobj(L_40, sizeof(Color_tD001788D726C3A7F1379BEED0260B9591F440C1F));
 	}
 
 IL_0155:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:448>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:449>
 		return (bool)0;
 	}
 }
@@ -9562,7 +9655,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CShowFeedbackU3Ed__61_MoveNext_m1652E0
 IL_0017:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:511>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:512>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_4 = V_1;
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_5 = V_1;
 		NullCheck(L_5);
@@ -9570,7 +9663,7 @@ IL_0017:
 		int32_t L_7 = __this->___p;
 		NullCheck(L_4);
 		L_4->___score = ((int32_t)il2cpp_codegen_add(L_6, L_7));
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:513>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:514>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_8 = V_1;
 		NullCheck(L_8);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_9 = L_8->___Feedback;
@@ -9583,14 +9676,14 @@ IL_0017:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:515>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:516>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_11 = V_1;
 		NullCheck(L_11);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_12 = L_11->___Feedback;
 		String_t* L_13 = __this->___t;
 		NullCheck(L_12);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_12, L_13);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:516>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:517>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_14 = V_1;
 		NullCheck(L_14);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_15 = L_14->___Feedback;
@@ -9601,7 +9694,7 @@ IL_0017:
 
 IL_0061:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:519>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:520>
 		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_17 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_17, (0.5f), NULL);
 		__this->___U3CU3E2__current = L_17;
@@ -9613,7 +9706,7 @@ IL_0061:
 IL_007a:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:521>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:522>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_18 = V_1;
 		NullCheck(L_18);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_19 = L_18->___Feedback;
@@ -9626,7 +9719,7 @@ IL_007a:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:521>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:522>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_21 = V_1;
 		NullCheck(L_21);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_22 = L_21->___Feedback;
@@ -9636,7 +9729,7 @@ IL_007a:
 
 IL_009f:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:522>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:523>
 		return (bool)0;
 	}
 }
@@ -9739,11 +9832,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool U3CStartCountDownU3Ed__57_MoveNext_m5AB3
 IL_001a:
 	{
 		__this->___U3CU3E1__state = (-1);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:392>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:393>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_4 = V_1;
 		NullCheck(L_4);
 		L_4->___isCountingDown = (bool)1;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:394>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:395>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_5 = V_1;
 		NullCheck(L_5);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_6 = L_5->___CountDown;
@@ -9756,7 +9849,7 @@ IL_001a:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:395>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:396>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_8 = V_1;
 		NullCheck(L_8);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_9 = L_8->___CountDown;
@@ -9769,7 +9862,7 @@ IL_001a:
 
 IL_0047:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:397>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:398>
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_11 = (StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)SZArrayNew(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var, (uint32_t)4);
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_12 = L_11;
 		NullCheck(L_12);
@@ -9784,7 +9877,7 @@ IL_0047:
 		NullCheck(L_15);
 		(L_15)->SetAt(static_cast<il2cpp_array_size_t>(3), (String_t*)_stringLiteral37E4D9717D4F65640D4D604FDCADCA3A42C8047B);
 		V_2 = L_15;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:399>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:400>
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_16 = V_2;
 		__this->___U3CU3E7__wrap1 = L_16;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E7__wrap1), (void*)L_16);
@@ -9794,14 +9887,14 @@ IL_0047:
 
 IL_0081:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:399>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:400>
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_17 = __this->___U3CU3E7__wrap1;
 		int32_t L_18 = __this->___U3CU3E7__wrap2;
 		NullCheck(L_17);
 		int32_t L_19 = L_18;
 		String_t* L_20 = (L_17)->GetAt(static_cast<il2cpp_array_size_t>(L_19));
 		V_3 = L_20;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:401>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:402>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_21 = V_1;
 		NullCheck(L_21);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_22 = L_21->___CountDown;
@@ -9814,14 +9907,14 @@ IL_0081:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:403>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:404>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_24 = V_1;
 		NullCheck(L_24);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_25 = L_24->___CountDown;
 		String_t* L_26 = V_3;
 		NullCheck(L_25);
 		VirtualActionInvoker1< String_t* >::Invoke(66, L_25, L_26);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:404>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:405>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_27 = V_1;
 		NullCheck(L_27);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_28 = L_27->___CountDown;
@@ -9855,7 +9948,7 @@ IL_00c8:
 	{
 		NullCheck(G_B10_1);
 		VirtualActionInvoker1< Color_tD001788D726C3A7F1379BEED0260B9591F440C1F >::Invoke(23, G_B10_1, G_B10_0);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:405>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:406>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_33 = V_1;
 		NullCheck(L_33);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_34 = L_33->___CountDown;
@@ -9865,7 +9958,7 @@ IL_00c8:
 
 IL_00da:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:408>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:409>
 		WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3* L_35 = (WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3*)il2cpp_codegen_object_new(WaitForSeconds_tF179DF251655B8DF044952E70A60DF4B358A3DD3_il2cpp_TypeInfo_var);
 		WaitForSeconds__ctor_m579F95BADEDBAB4B3A7E302C6EE3995926EF2EFC(L_35, (1.0f), NULL);
 		__this->___U3CU3E2__current = L_35;
@@ -9883,7 +9976,7 @@ IL_00f3:
 
 IL_0108:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:399>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:400>
 		int32_t L_37 = __this->___U3CU3E7__wrap2;
 		StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248* L_38 = __this->___U3CU3E7__wrap1;
 		NullCheck(L_38);
@@ -9895,7 +9988,7 @@ IL_0108:
 	{
 		__this->___U3CU3E7__wrap1 = (StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)NULL;
 		Il2CppCodeGenWriteBarrier((void**)(&__this->___U3CU3E7__wrap1), (void*)(StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248*)NULL);
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:411>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:412>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_39 = V_1;
 		NullCheck(L_39);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_40 = L_39->___CountDown;
@@ -9908,7 +10001,7 @@ IL_0108:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:412>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:413>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_42 = V_1;
 		NullCheck(L_42);
 		TMP_Text_tE8D677872D43AD4B2AAF0D6101692A17D0B251A9* L_43 = L_42->___CountDown;
@@ -9921,15 +10014,15 @@ IL_0108:
 
 IL_0141:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:414>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:415>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_45 = V_1;
 		NullCheck(L_45);
 		L_45->___isCountingDown = (bool)0;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:415>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:416>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_46 = V_1;
 		NullCheck(L_46);
 		L_46->___started = (bool)1;
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:417>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:418>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_47 = V_1;
 		NullCheck(L_47);
 		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_48 = L_47->___audioManager;
@@ -9942,7 +10035,7 @@ IL_0141:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:417>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:418>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_50 = V_1;
 		NullCheck(L_50);
 		AudioManager_t4BE66A4A0E184D85AF74C37BC93BFBEC52953C7B* L_51 = L_50->___audioManager;
@@ -9952,7 +10045,7 @@ IL_0141:
 
 IL_0168:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:420>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:421>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_52 = V_1;
 		NullCheck(L_52);
 		Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* L_53 = L_52->___photoImage;
@@ -9965,7 +10058,7 @@ IL_0168:
 		}
 	}
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:421>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:422>
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_55 = V_1;
 		ConductorController_t62AF1B2E24B19275B5E0A3294184CD3B8AD4DC93* L_56 = V_1;
 		NullCheck(L_56);
@@ -9978,7 +10071,7 @@ IL_0168:
 
 IL_018d:
 	{
-		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:422>
+		//<source_info:/Users/sofiafloody/Desktop/ar_project/Assets/Scripts/ConductorController.cs:423>
 		return (bool)0;
 	}
 }
